@@ -1,35 +1,69 @@
 import React, { Component } from "react";
-import Articles from "./Articles";
+import { getArticles } from "../Api";
 import "../styling/App.css";
 import NavButtons from "./NavButtons";
+import QuerySelector from "./QuerySelector";
+import Articles from "./Articles";
+import { Link } from "@reach/router";
 
 class Home extends Component {
   state = {
     username: this.state,
-    page: 1,
+    p: 1,
+    sort_by: null,
+    order: null,
+    topic: null,
     errStatus: false,
-    isLoading: true
+    isLoading: true,
+    articles: []
   };
+
+  componentDidMount() {
+    const { p, sort_by, order, topic } = this.props;
+    console.log("component mounted!");
+    getArticles(p, sort_by, order, topic)
+      .then(data => this.setState({ articles: data.articles }))
+      .catch(err => {
+        this.setState({ errStatus: true });
+      });
+  }
+
+  //MOUNTS THE ARTICLES IN DEFAULT ORDER
 
   handlePageSubmit = (inc, event) => {
     event.preventDefault();
-    const { page } = this.state;
-    if (page === 1 && inc === -1) {
-      this.setState({ page: 1 });
-    } else this.setState({ page: page + inc });
-    console.log(this.state);
+    const { p } = this.state;
+    this.setState({ p: p + inc });
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    const { page } = this.state;
+  //HANDLES SETTING STATE OF PAGE INCREMENTS
 
-    if (prevState.page !== page) {
+  handleChange = event => {
+    const { name, value } = event.target;
+    console.log(name, value);
+    this.setState(state => ({ ...state, [name]: value }));
+  };
+
+  //HANDLES CHANGE OF DROP DOWN
+
+  componentDidUpdate(prevProps, prevState) {
+    const { p, sort_by, order } = this.state;
+    const { topic } = this.props;
+
+    if (prevState.p !== p || prevProps.topic !== topic) {
+      getArticles(p, sort_by, order, topic)
+        .then(data => this.setState({ articles: data.articles }))
+        .catch(err => {
+          this.setState({ errStatus: true });
+        });
     }
   }
 
-  render() {
-    const { page, username } = this.state;
+  //UPDATES ARTICLES WITH NEW PAGE NUMBER FROM STATE
 
+  render() {
+    const { articles } = this.state;
+    const postStyle = { float: "right" };
     return (
       <div className="Home">
         <header className="Home-header">
@@ -39,10 +73,18 @@ class Home extends Component {
           <hr />
         </header>
         <NavButtons />
-        <Articles page={page} username={username} />
+        <hr />
+        <Link to="/postarticle">
+          <button style={postStyle}>Post Article</button>
+        </Link>
+        <QuerySelector />
+        <Articles articles={articles} />
         <div className="Page-button">
-          <button type="submit" onSubmit={() => this.handlePageSubmit(-1)}>
-            {/* disalbed=if page num = 1 */}
+          <button
+            type="submit"
+            onSubmit={() => this.handlePageSubmit(-1)}
+            disabled={this.state.p === 1 ? true : false}
+          >
             &#171;
           </button>{" "}
           1{" "}

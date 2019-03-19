@@ -4,8 +4,8 @@ import React, { Component } from "react";
 
 class ArticleSearch extends Component {
   state = {
-    page: this.props,
-    sort: null,
+    p: this.props,
+    sort_by: null,
     order: null
   };
 

@@ -23,11 +23,14 @@ class SingleArt extends Component {
   }
 
   handleDelete = event => {
-    const { article_id } = this.props;
+    const { article_id } = this.state.article;
     event.preventDefault();
-    axios.delete(`${url}articles/${article_id}`).then(({ data }) => {
-      navigate("/articles");
-    });
+    axios
+      .delete(`${url}articles/${article_id}`)
+      .then(({ data }) => {
+        navigate("/home");
+      })
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -81,7 +84,7 @@ class SingleArt extends Component {
         <small style={authStyle}> Author: {article.author}</small>
         <div style={deleteButton}>
           {this.state.username === article.author && (
-            <form onSubmit={() => this.handleDelete(article.article_id)}>
+            <form onSubmit={this.handleDelete}>
               <button type="submit">Delete Post</button>
             </form>
           )}

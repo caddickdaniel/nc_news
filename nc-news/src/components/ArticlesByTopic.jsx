@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { getArticlesByTopic } from "../Api";
+import { getArticles } from "../Api";
 import { Link } from "@reach/router";
+import NavButtons from "./NavButtons";
 
 class ArticlesByTopic extends Component {
   state = {
@@ -9,9 +10,7 @@ class ArticlesByTopic extends Component {
 
   componentDidMount() {
     const { topic } = this.props;
-    getArticlesByTopic(topic).then(data =>
-      this.setState({ articles: data.articles })
-    );
+    getArticles(topic).then(data => this.setState({ articles: data.articles }));
   }
 
   render() {
@@ -44,18 +43,7 @@ class ArticlesByTopic extends Component {
           <h1 className="Home-title">NC News</h1>
           <hr />
           <hr />
-          <Link to="/home">
-            <button>Home</button>
-          </Link>
-          <Link to="/articles">
-            <button>Articles</button>
-          </Link>
-          <Link to="/topics">
-            <button>Topics</button>
-          </Link>
-          <Link to="/users">
-            <button>Users</button>
-          </Link>
+          <NavButtons />
         </header>
         <hr />
         <h1 className="ArtText">Articles on {this.props.topic}</h1>

@@ -6,7 +6,6 @@ import Topics from "./components/Topics";
 import Users from "./components/Users";
 import SignIn from "./components/SignIn";
 import SingleArt from "./components/SingleArt";
-import ArticleSearch from "./components/ArticleSearch";
 import ArticlesByTopic from "./components/ArticlesByTopic";
 import PostArticle from "./components/PostArticle";
 import SingleUser from "./components/SingleUser";
@@ -35,8 +34,7 @@ class App extends Component {
           <Topics path="/topics" />
           <Users path="/users" />
           <SingleArt path="/articles/:article_id" />
-          <ArticlesByTopic path="articles/topic/:topic" />
-          <ArticleSearch path="/articles" />
+          <Home path="articles/topic/:topic" />
           <SingleUser path="/user/:user" />
           <PostArticle path="/postarticle" />
           <Error path="/error" />

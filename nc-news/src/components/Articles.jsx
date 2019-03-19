@@ -1,29 +1,17 @@
 import React, { Component } from "react";
-import { getArticles } from "../Api";
 import { Link } from "@reach/router";
 import { navigate } from "@reach/router";
 
 export class Articles extends Component {
   state = {
-    articles: [],
     errStatus: false,
-    username: "grumpy19",
-    page: this.props
+    username: "grumpy19"
   };
-
-  componentDidMount() {
-    const { page, sort, order } = this.props;
-    console.log("component mounted!");
-    getArticles(page, sort, order)
-      .then(data => this.setState({ articles: data.articles }))
-      .catch(err => {
-        this.setState({ errStatus: true });
-      });
-  }
 
   render() {
     const { errStatus } = this.state;
-    const articleItems = this.state.articles.map(article => {
+    const { articles } = this.props;
+    const articleItems = articles.map(article => {
       if (errStatus) return navigate("/error");
       else
         return (
