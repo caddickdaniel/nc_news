@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getUsers } from "./Api";
+import { getUsers } from "../Api";
 import { Link } from "@reach/router";
 
 class SingleUser extends Component {

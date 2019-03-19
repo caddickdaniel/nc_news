@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getArticlesByTopic } from "./Api";
+import { getArticlesByTopic } from "../Api";
 import { Link } from "@reach/router";
 
 class ArticlesByTopic extends Component {

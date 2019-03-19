@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { voteChange } from "./Api";
+import { voteChange } from "../Api";
 
 class Voting extends Component {
   state = {

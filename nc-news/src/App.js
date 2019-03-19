@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import "./App.css";
+import "./styling/App.css";
 import { Router } from "@reach/router";
 import Home from "./components/Home";
 import Topics from "./components/Topics";

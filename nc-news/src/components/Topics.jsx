@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getTopics } from "./Api";
+import { getTopics } from "../Api";
 import { Link } from "@reach/router";
 import PostTopic from "./PostTopic";
 

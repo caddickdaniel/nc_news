@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { getSingleArticle } from "./Api";
+import { getSingleArticle } from "../Api";
 import Comments from "./Comments";
 import { Link } from "@reach/router";
 import axios from "axios";
 import { navigate } from "@reach/router";
 import PostComment from "./PostComment";
-import url from "../Api";
+import { url } from "../Api";
 
 class SingleArt extends Component {
   state = {

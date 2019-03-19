@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { getComments } from "./Api";
+import { getComments } from "../Api";
 import axios from "axios";
 import { navigate } from "@reach/router";
-import url from "../Api";
+import { url } from "../Api";
 
 class Comments extends Component {
   state = {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getArticles } from "./Api";
+import { getArticles } from "../Api";
 import { Link } from "@reach/router";
 import { navigate } from "@reach/router";
 

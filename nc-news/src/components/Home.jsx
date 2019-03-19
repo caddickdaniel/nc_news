@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Articles from "./Articles";
-import "../App.css";
+import "../styling/App.css";
 import { Link } from "@reach/router";
 
 class Home extends Component {

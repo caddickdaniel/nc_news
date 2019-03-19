@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { navigate } from "@reach/router";
-import url from "../Api";
+import { url } from "../Api";
 
 class PostUser extends Component {
   state = {
