@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 
 class SignIn extends Component {
   state = {
@@ -29,7 +28,5 @@ class SignIn extends Component {
     );
   }
 }
-
-SignIn.propTypes = {};
 
 export default SignIn;
