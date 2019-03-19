@@ -31,10 +31,11 @@ class App extends Component {
         <Router>
           <SignIn path="/" handleSignIn={this.handleSignIn} />
           <Home path="/home" />
+          <Home path="articles/topic/:topic" />
+          <Home path="articles/topic/:slug" />
           <Topics path="/topics" />
           <Users path="/users" />
           <SingleArt path="/articles/:article_id" />
-          <Home path="articles/topic/:topic" />
           <SingleUser path="/user/:user" />
           <PostArticle path="/postarticle" />
           <Error path="/error" />
