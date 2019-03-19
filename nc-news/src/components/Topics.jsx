@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { getTopics } from "../Api";
 import { Link } from "@reach/router";
 import PostTopic from "./PostTopic";
+import NavButtons from "./NavButtons";
 
 export class Topics extends Component {
   state = {
@@ -14,8 +15,6 @@ export class Topics extends Component {
   }
 
   render() {
-    const postStyle = { float: "right" };
-
     const topicItems = this.state.topics.map(topic => {
       return (
         <div className="Topics">
@@ -38,18 +37,7 @@ export class Topics extends Component {
           <hr />
           <hr />
         </header>
-        <Link to="/home">
-          <button>Home</button>
-        </Link>
-        <Link to="/articles">
-          <button>Articles</button>
-        </Link>
-        <Link to="/topics">
-          <button>Topics</button>
-        </Link>
-        <Link to="/users">
-          <button>Users</button>
-        </Link>
+        <NavButtons />
         <hr />
         <h1 className="ArtText">Topics</h1>
         {topicItems}

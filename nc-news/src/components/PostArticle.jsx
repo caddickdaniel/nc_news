@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "@reach/router";
 import { navigate } from "@reach/router";
 import { url } from "../Api";
+import NavButtons from "./NavButtons";
 
 class PostArticle extends Component {
   state = {
@@ -44,18 +44,7 @@ class PostArticle extends Component {
           <hr />
           <hr />
         </header>
-        <Link to="/home">
-          <button>Home</button>
-        </Link>
-        <Link to="/articles">
-          <button>Articles </button>
-        </Link>
-        <Link to="/topics">
-          <button>Topics</button>
-        </Link>
-        <Link to="/users">
-          <button>Users</button>
-        </Link>
+        <NavButtons />
         <div style={postStyle}>
           <h2>Add Article</h2>
           <form onSubmit={this.handlePostSubmit}>

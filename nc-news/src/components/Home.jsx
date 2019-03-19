@@ -1,24 +1,34 @@
 import React, { Component } from "react";
 import Articles from "./Articles";
 import "../styling/App.css";
-import { Link } from "@reach/router";
+import NavButtons from "./NavButtons";
 
 class Home extends Component {
   state = {
-    username: "",
+    username: this.state,
     page: 1,
-    errStatus: false
+    errStatus: false,
+    isLoading: true
   };
 
-  // handlePageSubmit = (inc, event) => {
-  //   event.preventDefault()
-  //   const {page} = this.state
-  //   this.setState({page: (page + inc)})
-  // }
+  handlePageSubmit = (inc, event) => {
+    event.preventDefault();
+    const { page } = this.state;
+    if (page === 1 && inc === -1) {
+      this.setState({ page: 1 });
+    } else this.setState({ page: page + inc });
+    console.log(this.state);
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    const { page } = this.state;
+
+    if (prevState.page !== page) {
+    }
+  }
 
   render() {
-    const postStyle = { float: "right" };
-    const { page } = this.state;
+    const { page, username } = this.state;
 
     return (
       <div className="Home">
@@ -28,30 +38,17 @@ class Home extends Component {
           <hr />
           <hr />
         </header>
-        <div>
-          <Link to="/home">
-            <button>Home</button>
-          </Link>
-          <Link to="/articles">
-            <button>Articles </button>
-          </Link>
-          <Link to="/topics">
-            <button>Topics</button>
-          </Link>
-          <Link to="/users">
-            <button>Users</button>
-          </Link>
-          <Link to="/postarticle">
-            <button style={postStyle}>Post Article</button>
-          </Link>
-          <hr />
-        </div>
-        <Articles page={page} />
+        <NavButtons />
+        <Articles page={page} username={username} />
         <div className="Page-button">
-          <button type="submit">&#171;</button> 1{" "}
-          <button type="submit">&#187;</button>
-          {/* onSubmit={this.handlePageSubmit(-1)} */}
-          {/* onSubmit={this.handlePageSubmit(1)} */}
+          <button type="submit" onSubmit={() => this.handlePageSubmit(-1)}>
+            {/* disalbed=if page num = 1 */}
+            &#171;
+          </button>{" "}
+          1{" "}
+          <button type="submit" onSubmit={() => this.handlePageSubmit(1)}>
+            &#187;
+          </button>
         </div>
       </div>
     );

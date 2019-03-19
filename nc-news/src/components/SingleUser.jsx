@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { getUsers } from "../Api";
-import { Link } from "@reach/router";
+import NavButtons from "./NavButtons";
 
 class SingleUser extends Component {
   state = {
@@ -29,18 +29,7 @@ class SingleUser extends Component {
           <hr />
           <hr />
         </header>
-        <Link to="/home">
-          <button>Home</button>
-        </Link>
-        <Link to="/articles">
-          <button>Articles</button>
-        </Link>
-        <Link to="/topics">
-          <button>Topics</button>
-        </Link>
-        <Link to="/users">
-          <button>Users</button>
-        </Link>
+        <NavButtons />
         <hr />
         <h1 className="ArtText">{this.props.user}</h1>
         <h2>{this.props.user.name}</h2>

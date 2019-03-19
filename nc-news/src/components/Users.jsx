@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { getUsers } from "../Api";
-import { Link } from "@reach/router";
 import PostUser from "./PostUser";
+import NavButtons from "./NavButtons";
 
 export class Users extends Component {
   state = {
@@ -14,7 +14,6 @@ export class Users extends Component {
   }
 
   render() {
-    const postStyle = { float: "right", marginRight: "1em" };
     const userStyle = {
       marginLeft: "10em",
       marginRight: "40em"
@@ -52,18 +51,7 @@ export class Users extends Component {
           <h2 className="Home-title">Search Users</h2>
           <hr />
         </header>
-        <Link to="/home">
-          <button>Home</button>
-        </Link>
-        <Link to="/articles">
-          <button>Articles</button>
-        </Link>
-        <Link to="/topics">
-          <button>Topics</button>
-        </Link>
-        <Link to="/users">
-          <button>Users</button>
-        </Link>
+        <NavButtons />
         <h1 className="ArtText">Users</h1>
         {userItems}
         <div>

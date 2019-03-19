@@ -6,10 +6,12 @@ import axios from "axios";
 import { navigate } from "@reach/router";
 import PostComment from "./PostComment";
 import { url } from "../Api";
+import NavButtons from "./NavButtons";
 
 class SingleArt extends Component {
   state = {
-    article: {}
+    article: {},
+    username: "grumpy19"
   };
 
   componentDidMount() {
@@ -28,21 +30,9 @@ class SingleArt extends Component {
     });
   };
 
-  deleteCondition() {
-    // if(this.props.username === this.state.article.author) {
-    return (
-      <form onSubmit={this.handleDelete}>
-        <button type="submit">Delete Post</button>
-      </form>
-    );
-  }
-  // }
-
-  //NEED TO CONDITIONALY RENDER THE DELETE BUTTON IF THE AUTHOR MATCHES CURRENT USER
-
   render() {
     console.dir(this.props);
-    const { article } = this.state;
+    const { article, username } = this.state;
     const { article_id } = this.props;
     const { comment_id } = this.props;
 
@@ -65,10 +55,6 @@ class SingleArt extends Component {
       textAlign: "center"
     };
 
-    const postStyle = {
-      textAlign: "center"
-    };
-
     const authStyle = {
       margin: "50px",
       marginBottom: "20px",
@@ -85,18 +71,7 @@ class SingleArt extends Component {
         <header className="Home-header">
           <h1 className="Home-title">NC News</h1>
           <hr />
-          <Link to="/home">
-            <button>Home</button>
-          </Link>
-          <Link to="/articles">
-            <button>Articles</button>
-          </Link>
-          <Link to="/topics">
-            <button>Topics</button>
-          </Link>
-          <Link to="/users">
-            <button>Users</button>
-          </Link>
+          <NavButtons />
         </header>
 
         <Link to={`/articles/topic/${article.topic}`}>
@@ -105,8 +80,11 @@ class SingleArt extends Component {
         <h3 style={topicStyling}>{article.title}</h3>
         <small style={authStyle}> Author: {article.author}</small>
         <div style={deleteButton}>
-          {this.deleteCondition()}
-          {/* { this.state.username === article.author && <form onSubmit={() => this.handleDelete(article.article_id)}></form> } */}
+          {this.state.username === article.author && (
+            <form onSubmit={() => this.handleDelete(article.article_id)}>
+              <button type="submit">Delete Post</button>
+            </form>
+          )}
         </div>
         <p style={bodyStyling}>{article.body}</p>
         <hr />

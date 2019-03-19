@@ -7,14 +7,14 @@ export class Articles extends Component {
   state = {
     articles: [],
     errStatus: false,
-    page: this.props,
-    username: "grumpy19"
+    username: "grumpy19",
+    page: this.props
   };
 
   componentDidMount() {
-    const { page } = this.props;
+    const { page, sort, order } = this.props;
     console.log("component mounted!");
-    getArticles(page)
+    getArticles(page, sort, order)
       .then(data => this.setState({ articles: data.articles }))
       .catch(err => {
         this.setState({ errStatus: true });

@@ -2,9 +2,25 @@ import axios from "axios";
 
 export const url = "https://afternoon-beyond-70751.herokuapp.com/api/";
 
-export const getArticles = page => {
+export const getArticles = (page, sort, order) => {
   console.log(page);
-  return axios.get(`${url}articles?p=${page}`).then(({ data }) => data);
+  // if (page) {
+  //   return axios.get(`${url}articles?p=${page}`).then(({ data }) => data);
+  if (sort) {
+    return axios
+      .get(`${url}articles?p=${page}&?sort_by=${sort}`)
+      .then(({ data }) => data);
+  } else if (order) {
+    return axios
+      .get(`${url}articles?p=${page}&?order=${order}`)
+      .then(({ data }) => data);
+  } else if (sort && order) {
+    return axios
+      .get(`${url}articles?p=${page}&?sort_by=${sort}&?order=${order}`)
+      .then(({ data }) => data);
+  } else {
+    return axios.get(`${url}articles?p=${page}`).then(({ data }) => data);
+  }
 };
 
 export const getArticlesByTopic = topic => {

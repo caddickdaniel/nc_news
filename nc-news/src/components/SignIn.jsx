@@ -15,7 +15,11 @@ class SignIn extends Component {
         <header className="Sign-in-header" />
         <h1>Welcome to NC News!</h1>
         <h4>Please enter your username</h4>
-        <form onSubmit={e => this.props.handleSignIn(e, this.state.username)}>
+        <form
+          onSubmit={event =>
+            this.props.handleSignIn(event, this.state.username)
+          }
+        >
           <input
             name="username"
             placeholder="Username"
