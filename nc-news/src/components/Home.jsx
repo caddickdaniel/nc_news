@@ -31,7 +31,7 @@ class Home extends Component {
   //MOUNTS THE ARTICLES IN DEFAULT ORDER
 
   handlePageSubmit = (inc, event) => {
-    event.preventDefault();
+    // event.preventDefault();
     const { p } = this.state;
     console.log("page submit init");
     this.setState({ p: p + inc });
