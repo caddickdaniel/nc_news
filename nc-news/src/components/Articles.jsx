@@ -9,8 +9,9 @@ export class Articles extends Component {
   };
 
   render() {
+    console.log(this.props);
     const { errStatus } = this.state;
-    const { articles } = this.props;
+    const { articles, topic } = this.props;
     const articleItems = articles.map(article => {
       if (errStatus) return navigate("/error");
       else
@@ -47,7 +48,11 @@ export class Articles extends Component {
     // console.log(articleItems);
     return (
       <div>
-        <h1 className="ArtText">Articles </h1>
+        {topic ? (
+          <h1 className="ArtText">Articles on {topic}</h1>
+        ) : (
+          <h1 className="ArtText">Articles</h1>
+        )}
         {articleItems}
       </div>
     );

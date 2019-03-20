@@ -83,6 +83,7 @@ class Home extends Component {
 
   render() {
     const { articles } = this.state;
+    const { topic } = this.props;
     const postStyle = { float: "right" };
     return (
       <div className="Home">
@@ -101,7 +102,7 @@ class Home extends Component {
           handleChange={this.handleChange}
           handleQuerySubmit={this.handleQuerySubmit}
         />
-        <Articles articles={articles} />
+        <Articles articles={articles} topic={topic} />
         <div className="Page-button">
           <button
             type="submit"
