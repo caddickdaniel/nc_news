@@ -23,11 +23,22 @@ class PostTopic extends Component {
       description: this.state.description
     };
     // console.log(this.state)
-    axios.post(`${url}topics`, { ...post }).then(({ data }) => {
-      //   console.log(data)
-      navigate(`/topics`);
-    });
+    axios
+      .post(`${url}topics`, { ...post })
+      .then(({ data }) => {
+        //   console.log(data)
+        navigate("/topics");
+      })
+      .catch(err => console.log(err));
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    const { description, slug } = this.state;
+
+    if (prevState.slug !== slug || prevState.description !== description) {
+      //I want to render all the topics including newest
+    }
+  }
 
   render() {
     //   console.log(this.props)

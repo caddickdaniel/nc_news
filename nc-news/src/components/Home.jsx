@@ -46,11 +46,31 @@ class Home extends Component {
 
   //HANDLES CHANGE OF DROP DOWN
 
+  handleQuerySubmit = event => {
+    const { p, sort_by, order } = this.state;
+    console.log(sort_by, order);
+    event.preventDefault();
+    console.log("query submitting");
+    getArticles(p, sort_by, order)
+      .then(data => this.setState({ articles: data.articles }))
+      .catch(err => {
+        this.setState({ errStatus: true });
+      });
+  };
+
+  //HANDLES QUERY SUBMIT
+
   componentDidUpdate(prevProps, prevState) {
     const { p, sort_by, order } = this.state;
     const { topic } = this.props;
 
-    if (prevState.p !== p || prevProps.topic !== topic) {
+    if (
+      prevState.p !== p ||
+      prevProps.topic !==
+        topic /*||
+      prevState.sort_by !== sort_by ||
+      prevState.order !== order */
+    ) {
       getArticles(p, sort_by, order, topic)
         .then(data => this.setState({ articles: data.articles }))
         .catch(err => {
@@ -77,7 +97,10 @@ class Home extends Component {
         <Link to="/postarticle">
           <button style={postStyle}>Post Article</button>
         </Link>
-        <QuerySelector />
+        <QuerySelector
+          handleChange={this.handleChange}
+          handleQuerySubmit={this.handleQuerySubmit}
+        />
         <Articles articles={articles} />
         <div className="Page-button">
           <button

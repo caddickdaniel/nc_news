@@ -4,9 +4,13 @@ export default class QuerySelector extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleQuerySubmit}>
+        <form onSubmit={this.props.handleQuerySubmit}>
           <p>Sort:</p>
-          <select name="sort_by" id="sort_by" onChange={this.handleChange}>
+          <select
+            name="sort_by"
+            id="sort_by"
+            onChange={this.props.handleChange}
+          >
             <option value="created">Created</option>
             <option value="article_id">Article ID</option>
             <option value="title">Title</option>
@@ -15,7 +19,7 @@ export default class QuerySelector extends Component {
             <option value="author">Author</option>
           </select>
           <p>Order:</p>
-          <select name="order" id="order" onChange={this.handleChange}>
+          <select name="order" id="order" onChange={this.props.handleChange}>
             <option value="desc">Desc</option>
             <option value="asc">Asc</option>
           </select>

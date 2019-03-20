@@ -47,7 +47,7 @@ export class Articles extends Component {
     // console.log(articleItems);
     return (
       <div>
-        <h1 className="ArtText">Articles</h1>
+        <h1 className="ArtText">Articles </h1>
         {articleItems}
       </div>
     );
