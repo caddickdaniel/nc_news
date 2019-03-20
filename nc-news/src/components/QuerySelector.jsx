@@ -11,7 +11,7 @@ export default class QuerySelector extends Component {
             id="sort_by"
             onChange={this.props.handleChange}
           >
-            <option value="created">Created</option>
+            <option value="created_at">Created</option>
             <option value="article_id">Article ID</option>
             <option value="title">Title</option>
             <option value="topic">Topic</option>
