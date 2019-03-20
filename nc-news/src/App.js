@@ -6,7 +6,6 @@ import Topics from "./components/Topics";
 import Users from "./components/Users";
 import SignIn from "./components/SignIn";
 import SingleArt from "./components/SingleArt";
-import ArticlesByTopic from "./components/ArticlesByTopic";
 import PostArticle from "./components/PostArticle";
 import SingleUser from "./components/SingleUser";
 import Error from "./components/Error";

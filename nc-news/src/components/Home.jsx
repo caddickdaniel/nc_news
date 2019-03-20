@@ -33,6 +33,7 @@ class Home extends Component {
   handlePageSubmit = (inc, event) => {
     event.preventDefault();
     const { p } = this.state;
+    console.log("page submit init");
     this.setState({ p: p + inc });
   };
 
@@ -82,7 +83,7 @@ class Home extends Component {
   //UPDATES ARTICLES WITH NEW PAGE NUMBER FROM STATE
 
   render() {
-    const { articles } = this.state;
+    const { articles, p } = this.state;
     const { topic } = this.props;
     const postStyle = { float: "right" };
     return (
@@ -105,16 +106,12 @@ class Home extends Component {
         <Articles articles={articles} topic={topic} />
         <div className="Page-button">
           <button
-            type="submit"
-            onSubmit={() => this.handlePageSubmit(-1)}
+            onClick={() => this.handlePageSubmit(-1)}
             disabled={this.state.p === 1 ? true : false}
           >
             &#171;
           </button>{" "}
-          1{" "}
-          <button type="submit" onSubmit={() => this.handlePageSubmit(1)}>
-            &#187;
-          </button>
+          {p} <button onClick={() => this.handlePageSubmit(1)}>&#187;</button>
         </div>
       </div>
     );
