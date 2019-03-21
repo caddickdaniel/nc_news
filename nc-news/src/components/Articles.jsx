@@ -9,7 +9,6 @@ export class Articles extends Component {
   };
 
   render() {
-    console.log(this.props);
     const { errStatus } = this.state;
     const { articles, topic } = this.props;
     const articleItems = articles.map(article => {
@@ -31,7 +30,6 @@ export class Articles extends Component {
                 Created:{" "}
                 {article.created_at.slice(0, 19).replace(/[a-zA-Z]/, " At: ")}
               </p>
-              {/* 2016-08-18T12:07:52.389Z */}
             </div>
             <p className="Article-body">{article.body.slice(0, 250)}...</p>
             <hr />
@@ -45,7 +43,6 @@ export class Articles extends Component {
           </div>
         );
     });
-    // console.log(articleItems);
     return (
       <div>
         {topic ? (

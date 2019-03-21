@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { voteChange } from "../Api";
+import axios from "axios";
+import { url } from "../Api";
 
 class Voting extends Component {
   state = {
@@ -8,10 +9,21 @@ class Voting extends Component {
 
   addVote = inc => {
     const { article_id, comment_id } = this.props;
+
+    const voteInc = (article_id, comment_id, inc) => {
+      const voteUrl = comment_id
+        ? `${url}comments/${comment_id}`
+        : `${url}articles/${article_id}`;
+
+      const { data } = axios.patch(voteUrl, {
+        inc_votes: inc
+      });
+    };
+
     console.log(this.props);
     if (comment_id) {
-      voteChange(article_id, comment_id, inc);
-    } else voteChange(article_id, comment_id, inc);
+      voteInc(article_id, comment_id, inc);
+    } else voteInc(article_id, comment_id, inc);
     this.setState(state => ({
       voteChange: state.voteChange + inc
     }));
@@ -19,16 +31,21 @@ class Voting extends Component {
 
   render() {
     const { votes } = this.props;
-
     const { voteChange } = this.state;
+    console.log("votes = ", votes);
+
+    const voteButton = {
+      textAlign: "center"
+    };
+
     return (
-      <div>
+      <div style={voteButton}>
         <button onClick={() => this.addVote(1)} disabled={voteChange === 1}>
-          &#9660;
+          &#9650;
         </button>
         <p>Votes:{votes + voteChange}</p>
         <button onClick={() => this.addVote(-1)} disabled={voteChange === -1}>
-          &#9650;
+          &#9660;
         </button>
       </div>
     );

@@ -3,6 +3,7 @@ import { getComments } from "../Api";
 import axios from "axios";
 import { navigate } from "@reach/router";
 import { url } from "../Api";
+import Voting from "./Voting";
 
 class Comments extends Component {
   state = {
@@ -17,8 +18,8 @@ class Comments extends Component {
     //   return document.getElementById('#comments').focus();
     // }
     const { article_id } = this.props;
-    getComments(article_id).then(
-      data => console.dir() || this.setState({ comments: data.comments })
+    getComments(article_id).then(data =>
+      this.setState({ comments: data.comments })
     );
   }
 
@@ -47,7 +48,6 @@ class Comments extends Component {
   }
 
   render() {
-    console.log(this.state.comments);
     const authorVoteStyle = {
       textAlign: "center"
     };
@@ -79,8 +79,11 @@ class Comments extends Component {
           </div>
           <p style={authorVoteStyle}>User: {comment.author}</p>
           <p style={authorVoteStyle}>
-            <button>&#9650;</button> Votes: {comment.votes}{" "}
-            <button>&#9660;</button>
+            <Voting
+              votes={comment.votes}
+              comment_id={comment.comment_id}
+              article_id={comment.article_id}
+            />
           </p>
           <hr />
         </div>

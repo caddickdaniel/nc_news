@@ -7,6 +7,7 @@ import { navigate } from "@reach/router";
 import PostComment from "./PostComment";
 import { url } from "../Api";
 import NavButtons from "./NavButtons";
+import Voting from "./Voting";
 
 class SingleArt extends Component {
   state = {
@@ -34,8 +35,7 @@ class SingleArt extends Component {
   };
 
   render() {
-    console.dir(this.props);
-    const { article, username } = this.state;
+    const { article } = this.state;
     const { article_id } = this.props;
     const { comment_id } = this.props;
 
@@ -52,10 +52,6 @@ class SingleArt extends Component {
       margin: "40px",
       marginBottom: "10px",
       fontSize: "175%"
-    };
-
-    const voteButton = {
-      textAlign: "center"
     };
 
     const authStyle = {
@@ -91,10 +87,7 @@ class SingleArt extends Component {
         </div>
         <p style={bodyStyling}>{article.body}</p>
         <hr />
-        <div style={voteButton}>
-          <button>&#9650;</button> Votes: {article.votes}{" "}
-          <button>&#9660;</button>{" "}
-        </div>
+        <Voting votes={article.votes} article_id={article_id} />
         <br />
         <div>
           <Comments article_id={article_id} comment_id={comment_id} />

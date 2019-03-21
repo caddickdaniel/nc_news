@@ -51,7 +51,9 @@ export class Users extends Component {
           <h2 className="Home-title">Search Users</h2>
           <hr />
         </header>
+        <hr />
         <NavButtons />
+        <hr />
         <h1 className="ArtText">Users</h1>
         {userItems}
         <div>

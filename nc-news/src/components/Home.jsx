@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getArticles } from "../Api";
+import { getArticles, getUsers } from "../Api";
 import "../styling/App.css";
 import NavButtons from "./NavButtons";
 import QuerySelector from "./QuerySelector";
@@ -8,30 +8,31 @@ import { Link } from "@reach/router";
 
 class Home extends Component {
   state = {
-    username: this.state,
+    username: this.props,
     p: 1,
     sort_by: null,
     order: null,
     topic: null,
     errStatus: false,
     isLoading: true,
-    articles: []
+    articles: [],
+    users: []
   };
 
   componentDidMount() {
     const { p, sort_by, order, topic } = this.props;
     console.log("component mounted!");
     getArticles(p, sort_by, order, topic)
+      .then(getUsers())
       .then(data => this.setState({ articles: data.articles }))
       .catch(err => {
         this.setState({ errStatus: true });
       });
   }
 
-  //MOUNTS THE ARTICLES IN DEFAULT ORDER
+  //MOUNTS THE ARTICLES AND USERS IN DEFAULT ORDER
 
-  handlePageSubmit = (inc, event) => {
-    // event.preventDefault();
+  handlePageSubmit = inc => {
     const { p } = this.state;
     console.log("page submit init");
     this.setState({ p: p + inc });
@@ -64,6 +65,7 @@ class Home extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { p, sort_by, order } = this.state;
     const { topic } = this.props;
+    console.log(this.state);
 
     if (
       prevState.p !== p ||
