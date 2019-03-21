@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getArticles, getUsers } from "../Api";
+import { getArticles } from "../Api";
 import "../styling/App.css";
 import NavButtons from "./NavButtons";
 import QuerySelector from "./QuerySelector";
@@ -17,7 +17,6 @@ class Home extends Component {
     errStatus: false,
     isLoading: true,
     articles: [],
-    users: [],
     loggedIn: this.props
   };
 
@@ -25,7 +24,6 @@ class Home extends Component {
     const { p, sort_by, order, topic } = this.props;
     console.log("component mounted!");
     getArticles(p, sort_by, order, topic)
-      .then(getUsers())
       .then(data =>
         this.setState({ articles: data.articles, isLoading: false })
       )
@@ -97,8 +95,8 @@ class Home extends Component {
           console.dir(err) ||
             this.setState({
               errStatus: {
-                message: err.response.data.message,
-                status: err.response.data.status
+                message: err.message,
+                status: err.status
               },
               replace: true
             });
@@ -139,7 +137,14 @@ class Home extends Component {
           >
             &#171;
           </button>{" "}
-          {p} <button onClick={() => this.handlePageSubmit(1)}>&#187;</button>
+          {p}{" "}
+          <button
+            onClick={() => this.handlePageSubmit(1)}
+            // disabled={ ? true : false}
+            //if total_count > 10
+          >
+            &#187;
+          </button>
         </div>
       </div>
     );

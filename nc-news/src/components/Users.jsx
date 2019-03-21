@@ -5,15 +5,19 @@ import NavButtons from "./NavButtons";
 
 export class Users extends Component {
   state = {
-    users: []
+    users: [],
+    isLoading: true
   };
 
   componentDidMount() {
     console.log("component mounted!");
-    getUsers().then(data => this.setState({ users: data.users }));
+    getUsers().then(data =>
+      this.setState({ users: data.users, isLoading: false })
+    );
   }
 
   render() {
+    const { isLoading } = this.state;
     const userStyle = {
       marginLeft: "10em",
       marginRight: "40em"
@@ -26,6 +30,7 @@ export class Users extends Component {
     };
 
     const userItems = this.state.users.map(user => {
+      if (isLoading) return <p>Loading...</p>;
       return (
         <div className="Users">
           <div style={userStyle}>

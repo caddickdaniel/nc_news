@@ -57,14 +57,12 @@ export const getComments = id => {
 };
 
 export const deleteItem = comment_id => {
-  return axios.delete(`${url}comments/${comment_id}`).then(({ data }) => {
-    if (comment_id) {
-      console.log(comment_id) ||
-        this.setState(({ didDelete }) => {
-          return { didDelete: didDelete + 1 };
-        });
-    }
-  });
+  return axios.delete(`${url}comments/${comment_id}`);
 };
 
+export const postComment = (article_id, post) => {
+  axios
+    .post(`${url}articles/${article_id}/comments`, { ...post })
+    .then(({ data }) => data);
+};
 //WILL EVENTUALLY REFORMAT TO REDUCE THE AMOUNT OF FUNCTIONS

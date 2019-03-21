@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios";
-import { navigate } from "@reach/router";
-import { url } from "../Api";
+import { postComment } from "../Api";
 
 class PostComment extends Component {
   state = {
@@ -16,20 +14,12 @@ class PostComment extends Component {
 
   handleCommentSubmit = event => {
     event.preventDefault();
-
     const { article_id } = this.props;
-
     const post = {
       body: this.state.body,
       author: "grumpy19"
     };
-    // console.log(this.state)
-    axios
-      .post(`${url}articles/${article_id}/comments`, { ...post })
-      .then(({ data }) => {
-        //   console.log(data)
-        navigate(`/articles/${article_id}`);
-      });
+    postComment(article_id, post);
   };
 
   render() {

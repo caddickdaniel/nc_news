@@ -38,6 +38,7 @@ class SingleArt extends Component {
     const { article } = this.state;
     const { article_id } = this.props;
     const { comment_id } = this.props;
+    console.log(comment_id);
 
     const bodyStyling = {
       margin: "50px",
@@ -93,9 +94,6 @@ class SingleArt extends Component {
         <br />
         <div>
           <Comments article_id={article_id} comment_id={comment_id} />
-        </div>
-        <div>
-          <PostComment article_id={article_id} />
         </div>
       </div>
     );

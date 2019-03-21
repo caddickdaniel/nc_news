@@ -7,13 +7,14 @@ import NavButtons from "./NavButtons";
 export class Topics extends Component {
   state = {
     topics: [],
-    errStatus: false
+    errStatus: false,
+    isLoading: true
   };
 
   componentDidMount() {
     console.log("component mounted!");
     getTopics()
-      .then(data => this.setState({ topics: data.topics }))
+      .then(data => this.setState({ topics: data.topics, isLoading: false }))
       .catch(err => {
         console.dir(err) ||
           this.setState({
@@ -27,6 +28,7 @@ export class Topics extends Component {
   }
 
   render() {
+    const { isLoading } = this.state;
     const topicItems = this.state.topics.map(topic => {
       return (
         <div className="Topics">
@@ -41,6 +43,7 @@ export class Topics extends Component {
       );
     });
     console.log(topicItems);
+    if (isLoading) return <p>Loading...</p>;
     return (
       <div>
         <header className="Home-header">

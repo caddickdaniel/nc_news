@@ -7,7 +7,7 @@ class Error extends Component {
     return (
       <div>
         <h1>Error</h1>
-        <p>Status:{errStatus}</p>
+        <p>{errStatus}</p>
       </div>
     );
   }
