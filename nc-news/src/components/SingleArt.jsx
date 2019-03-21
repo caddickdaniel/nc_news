@@ -70,7 +70,9 @@ class SingleArt extends Component {
         <header className="Home-header">
           <h1 className="Home-title">NC News</h1>
           <hr />
+          <hr />
           <NavButtons />
+          <hr />
         </header>
 
         <Link to={`/articles/topic/${article.topic}`}>

@@ -9,6 +9,7 @@ import SingleArt from "./components/SingleArt";
 import PostArticle from "./components/PostArticle";
 import SingleUser from "./components/SingleUser";
 import Error from "./components/Error";
+// import { validateUser } from "./Api";
 
 class App extends Component {
   state = {
@@ -19,6 +20,7 @@ class App extends Component {
     event.preventDefault();
     this.setState({ username });
     window.localStorage.setItem("username", username);
+    // validateUser(username);
   };
 
   render() {
@@ -27,9 +29,10 @@ class App extends Component {
     return (
       <Fragment>
         {/* {username && console.log('******') && */}
+        {/* <SignIn path="/" handleSignIn={this.handleSignIn}> */}
         <Router>
           <SignIn path="/" handleSignIn={this.handleSignIn} />
-          <Home path="/home" />
+          <Home path="/home" username={username} />
           <Home path="articles/topic/:topic" />
           <Home path="articles/topic/:slug" />
           <Topics path="/topics" />
@@ -39,6 +42,7 @@ class App extends Component {
           <PostArticle path="/postarticle" />
           <Error path="/error" />
         </Router>{" "}
+        {/* </SignIn> */}
         {/*}*/}
       </Fragment>
     );

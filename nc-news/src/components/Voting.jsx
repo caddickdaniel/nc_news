@@ -20,7 +20,7 @@ class Voting extends Component {
       });
     };
 
-    console.log(this.props);
+    // console.log(this.props);
     if (comment_id) {
       voteInc(article_id, comment_id, inc);
     } else voteInc(article_id, comment_id, inc);
@@ -32,7 +32,7 @@ class Voting extends Component {
   render() {
     const { votes } = this.props;
     const { voteChange } = this.state;
-    console.log("votes = ", votes);
+    // console.log("votes = ", votes);
 
     const voteButton = {
       textAlign: "center"
@@ -43,7 +43,7 @@ class Voting extends Component {
         <button onClick={() => this.addVote(1)} disabled={voteChange === 1}>
           &#9650;
         </button>
-        <p>Votes:{votes + voteChange}</p>
+        Votes:{votes + voteChange}
         <button onClick={() => this.addVote(-1)} disabled={voteChange === -1}>
           &#9660;
         </button>

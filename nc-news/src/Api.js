@@ -56,4 +56,15 @@ export const getComments = id => {
   return axios.get(`${url}articles/${id}/comments`).then(({ data }) => data);
 };
 
+export const deleteItem = comment_id => {
+  return axios.delete(`${url}comments/${comment_id}`).then(({ data }) => {
+    if (comment_id) {
+      console.log(comment_id) ||
+        this.setState(({ didDelete }) => {
+          return { didDelete: didDelete + 1 };
+        });
+    }
+  });
+};
+
 //WILL EVENTUALLY REFORMAT TO REDUCE THE AMOUNT OF FUNCTIONS

@@ -1,12 +1,21 @@
 import React, { Component } from "react";
+// import { validateUser } from "../Api";
 
 class SignIn extends Component {
   state = {
-    username: null
+    username: null,
+    loggedIn: false
   };
 
   handleChange = event => {
     this.setState({ username: event.target.value });
+  };
+
+  handleSignIn = (event, username) => {
+    event.preventDefault();
+    this.setState({ username });
+    window.localStorage.setItem("username", username);
+    // validateUser(username);
   };
 
   render() {

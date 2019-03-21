@@ -16,7 +16,8 @@ class Home extends Component {
     errStatus: false,
     isLoading: true,
     articles: [],
-    users: []
+    users: [],
+    loggedIn: this.props
   };
 
   componentDidMount() {

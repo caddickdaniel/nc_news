@@ -1,22 +1,17 @@
 import React, { Component } from "react";
 import { getComments } from "../Api";
-import axios from "axios";
-import { navigate } from "@reach/router";
-import { url } from "../Api";
 import Voting from "./Voting";
+import { deleteItem } from "../Api";
 
 class Comments extends Component {
   state = {
     comments: [],
     username: "grumpy19",
-    didDelete: 0
+    didDelete: 0,
+    comment: {}
   };
 
   componentDidMount() {
-    // console.dir(this.props)
-    // if(this.props.location.href.includes('comments')) {
-    //   return document.getElementById('#comments').focus();
-    // }
     const { article_id } = this.props;
     getComments(article_id).then(data =>
       this.setState({ comments: data.comments })
@@ -24,19 +19,13 @@ class Comments extends Component {
   }
 
   handleDelete = event => {
-    const { article_id } = this.props;
     const { comment_id } = this.state.comments;
-
+    //something to with trying to get a comment_id from an array of numerous comments?
     event.preventDefault();
-
-    axios.delete(`${url}comments/${comment_id}`).then(({ data }) => {
-      if (comment_id) {
-        this.setState(({ didDelete }) => {
-          return { didDelete: didDelete + 1 };
-        });
-      }
-      navigate(`/articles/${article_id}`);
-    });
+    console.log(this.event);
+    deleteItem(comment_id)
+      .then(data => this.setState({ comments: data.comments }))
+      .catch(err => console.log(err));
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -72,19 +61,17 @@ class Comments extends Component {
           <h3 style={bodyStyle}>{comment.body}</h3>
           <div style={deleteButton}>
             {this.state.username === comment.author && (
-              <form onSubmit={() => this.handleDelete(comment.comment_id)}>
+              <form onSubmit={this.handleDelete}>
                 <button type="submit">Delete Post</button>
               </form>
             )}
           </div>
           <p style={authorVoteStyle}>User: {comment.author}</p>
-          <p style={authorVoteStyle}>
-            <Voting
-              votes={comment.votes}
-              comment_id={comment.comment_id}
-              article_id={comment.article_id}
-            />
-          </p>
+          <Voting
+            votes={comment.votes}
+            comment_id={comment.comment_id}
+            article_id={comment.article_id}
+          />
           <hr />
         </div>
       );
