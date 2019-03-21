@@ -6,12 +6,24 @@ import NavButtons from "./NavButtons";
 
 export class Topics extends Component {
   state = {
-    topics: []
+    topics: [],
+    errStatus: false
   };
 
   componentDidMount() {
     console.log("component mounted!");
-    getTopics().then(data => this.setState({ topics: data.topics }));
+    getTopics()
+      .then(data => this.setState({ topics: data.topics }))
+      .catch(err => {
+        console.dir(err) ||
+          this.setState({
+            errStatus: {
+              message: err.response.data.message,
+              status: err.response.data.status
+            },
+            replace: true
+          });
+      });
   }
 
   render() {

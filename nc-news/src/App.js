@@ -40,7 +40,7 @@ class App extends Component {
           <SingleArt path="/articles/:article_id" />
           <SingleUser path="/user/:user" />
           <PostArticle path="/postarticle" />
-          <Error path="/error" />
+          <Error default path="/error" />
         </Router>{" "}
         {/* </SignIn> */}
         {/*}*/}

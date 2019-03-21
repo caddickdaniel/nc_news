@@ -5,6 +5,7 @@ import NavButtons from "./NavButtons";
 import QuerySelector from "./QuerySelector";
 import Articles from "./Articles";
 import { Link } from "@reach/router";
+import Error from "./Error";
 
 class Home extends Component {
   state = {
@@ -25,9 +26,18 @@ class Home extends Component {
     console.log("component mounted!");
     getArticles(p, sort_by, order, topic)
       .then(getUsers())
-      .then(data => this.setState({ articles: data.articles }))
+      .then(data =>
+        this.setState({ articles: data.articles, isLoading: false })
+      )
       .catch(err => {
-        this.setState({ errStatus: true });
+        console.dir(err) ||
+          this.setState({
+            errStatus: {
+              message: err.response.data.message,
+              status: err.response.data.status
+            },
+            replace: true
+          });
       });
   }
 
@@ -57,7 +67,13 @@ class Home extends Component {
     getArticles(p, sort_by, order)
       .then(data => this.setState({ articles: data.articles }))
       .catch(err => {
-        this.setState({ errStatus: true });
+        this.setState({
+          errStatus: {
+            message: err.response.data.message,
+            status: err.response.data.status
+          },
+          replace: true
+        });
       });
   };
 
@@ -78,7 +94,14 @@ class Home extends Component {
       getArticles(p, sort_by, order, topic)
         .then(data => this.setState({ articles: data.articles }))
         .catch(err => {
-          this.setState({ errStatus: true });
+          console.dir(err) ||
+            this.setState({
+              errStatus: {
+                message: err.response.data.message,
+                status: err.response.data.status
+              },
+              replace: true
+            });
         });
     }
   }
@@ -86,9 +109,11 @@ class Home extends Component {
   //UPDATES ARTICLES WITH NEW PAGE NUMBER FROM STATE
 
   render() {
-    const { articles, p } = this.state;
+    const { articles, p, isLoading, errStatus } = this.state;
     const { topic } = this.props;
     const postStyle = { float: "right" };
+    if (isLoading) return <p>Loading...</p>;
+    else if (errStatus) return <Error errStatus={errStatus} />;
     return (
       <div className="Home">
         <header className="Home-header">
@@ -106,7 +131,7 @@ class Home extends Component {
           handleChange={this.handleChange}
           handleQuerySubmit={this.handleQuerySubmit}
         />
-        <Articles articles={articles} topic={topic} />
+        <Articles articles={articles} topic={topic} errStatus={errStatus} />
         <div className="Page-button">
           <button
             onClick={() => this.handlePageSubmit(-1)}

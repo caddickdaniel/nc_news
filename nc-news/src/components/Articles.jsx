@@ -1,18 +1,17 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
-import { navigate } from "@reach/router";
+import Error from "./Error";
 
 export class Articles extends Component {
   state = {
-    errStatus: false,
     username: "grumpy19"
   };
 
   render() {
-    const { errStatus } = this.state;
-    const { articles, topic } = this.props;
+    const { articles, topic, errStatus } = this.props;
     const articleItems = articles.map(article => {
-      if (errStatus) return navigate("/error");
+      if (articles === null) return <p>There are no articles for this topic</p>;
+      if (errStatus) return <Error errStatus={errStatus} />;
       else
         return (
           <div className="Articles" key={article.article_id}>

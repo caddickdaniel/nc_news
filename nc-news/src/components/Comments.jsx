@@ -20,7 +20,7 @@ class Comments extends Component {
 
   handleDelete = event => {
     const { comment_id } = this.state.comments;
-    //something to with trying to get a comment_id from an array of numerous comments?
+    //need to pass handleDelete the comment_id, undefined at the moment
     event.preventDefault();
     console.log(this.event);
     deleteItem(comment_id)
