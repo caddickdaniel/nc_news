@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import { getUsers } from "../Api";
+import { getUsers, getArticles } from "../Api";
 import NavButtons from "./NavButtons";
 import Error from "./Error";
 
 class SingleUser extends Component {
   state = {
     user: {},
-    errStatus: false
+    errStatus: false,
+    articles: []
   };
 
   componentDidMount() {

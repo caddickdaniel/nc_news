@@ -1,68 +1,43 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#NC-News
 
-## Available Scripts
+This is a front-end news site built using the NC-News API I created (https://github.com/caddickdaniel/BE2-NC-Knews "here")
 
-In the project directory, you can run:
+This application allows you to browse user articles, post articles of your own, comment and vote on articles/comments, create new topics and more.
 
-### `npm start`
+##Getting Started
+###Prerequisites
+You will need an editor such as VS Code, as well as Node.js (no later than v11.0) and Node Package Manager (no later than 6.4.1) up and running on your machine.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+##Installing
+###Get the code
+First off you want to fork the repo from GitHub. To do this click on the fork option to the upper right hand side and select the GitHub account you want to fork too.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Then you want to clone the repo. To do this you want to select clone repo, copy the link provided and paste that link into your terminal in an appropriate folder like so
 
-### `npm test`
+`git clone https://github.com/caddickdaniel/BE2-NC-Knews.git`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This will download the repo onto your machine. You want to then open the repo using your code editor.
 
-### `npm run build`
+##Install Dependancies
+Once you have successfully cloned the repo, you are going to want to install all the relative dependancies needed to run the code. To do this run the following bit of code in your terminal.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`npm install body-parser chai express nodemon knex mocha pg supertest`
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Once the install is complete you may want to go into your node_modules folder and check that the dependancies have been downloaded.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+##Run the App
+Once you've successfully downloaded the dependancies you are ready to run the code yourself. Now all you need to do is type the following command into your console.
 
-### `npm run eject`
+`npm start`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+This will open a local version of the website that you can then test and play around with.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+##Tech
+###Front-end
+The only technology used in the development of this application is React. I felt like sticking solely to React as I created this App would help my understanding of it's lifecycle and principles much more than if I was to use various tech and frameworks.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+###Back-end
+The API I created originally to accompany my Front-end (linked at the top) was built using Postgres and Express. With mocha and chai used for testing purposes.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+##Contributors
+Danny Caddick (https://github.com/caddickdaniel "caddickdaniel")
