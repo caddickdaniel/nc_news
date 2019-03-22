@@ -48,7 +48,13 @@ class SingleUser extends Component {
         <hr />
         <h1 className="ArtText">{this.state.user.username}</h1>
         <h2>{this.state.user.name}</h2>
-        <img src={this.state.user.avatar_url} alt="avatar" />
+        <img
+          src={
+            this.state.user.avatar_url ||
+            "https://cdn-images-1.medium.com/max/1200/1*MccriYX-ciBniUzRKAUsAw.png"
+          }
+          alt="avatar"
+        />
       </div>
     );
   }
