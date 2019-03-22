@@ -21,25 +21,21 @@ class Home extends Component {
 
   componentDidMount() {
     const { p, sort_by, order, topic } = this.props;
-    console.log("component mounted!");
     getArticles(p, sort_by, order, topic)
       .then(data =>
         this.setState({ articles: data.articles, isLoading: false })
       )
       .catch(err => {
-        console.dir(err) ||
-          this.setState({
-            errStatus: {
-              message:
-                err.response.data.message || "Sorry this page cannot be found",
-              status: err.response.request.status || 400
-            },
-            replace: true
-          });
+        this.setState({
+          errStatus: {
+            message:
+              err.response.data.message || "Sorry this page cannot be found",
+            status: err.response.request.status || 400
+          },
+          replace: true
+        });
       });
   }
-
-  //MOUNTS THE ARTICLES AND USERS IN DEFAULT ORDER
 
   handlePageSubmit = inc => {
     const { p } = this.state;
@@ -47,21 +43,17 @@ class Home extends Component {
     this.setState({ p: p + inc });
   };
 
-  //HANDLES SETTING STATE OF PAGE INCREMENTS
-
   handleChange = event => {
     const { name, value } = event.target;
     console.log(name, value);
     this.setState(state => ({ ...state, [name]: value }));
   };
 
-  //HANDLES CHANGE OF DROP DOWN
-
   handleQuerySubmit = event => {
     const { p, sort_by, order } = this.state;
-    console.log(sort_by, order);
+
     event.preventDefault();
-    console.log("query submitting");
+
     getArticles(p, sort_by, order)
       .then(data => this.setState({ articles: data.articles }))
       .catch(err => {
@@ -76,38 +68,25 @@ class Home extends Component {
       });
   };
 
-  //HANDLES QUERY SUBMIT
-
   componentDidUpdate(prevProps, prevState) {
     const { p, sort_by, order } = this.state;
     const { topic } = this.props;
-    console.log(this.state);
 
-    if (
-      prevState.p !== p ||
-      prevProps.topic !==
-        topic /*||
-      prevState.sort_by !== sort_by ||
-      prevState.order !== order */
-    ) {
+    if (prevState.p !== p || prevProps.topic !== topic) {
       getArticles(p, sort_by, order, topic)
         .then(data => this.setState({ articles: data.articles }))
         .catch(err => {
-          console.dir(err) ||
-            this.setState({
-              errStatus: {
-                message:
-                  err.response.data.message ||
-                  "Sorry this page cannot be found",
-                status: err.response.request.status || 400
-              },
-              replace: true
-            });
+          this.setState({
+            errStatus: {
+              message:
+                err.response.data.message || "Sorry this page cannot be found",
+              status: err.response.request.status || 400
+            },
+            replace: true
+          });
         });
     }
   }
-
-  //UPDATES ARTICLES WITH NEW PAGE NUMBER FROM STATE
 
   render() {
     const { articles, p, isLoading, errStatus } = this.state;
@@ -143,14 +122,7 @@ class Home extends Component {
           >
             &#171;
           </button>{" "}
-          {p}{" "}
-          <button
-            onClick={() => this.handlePageSubmit(1)}
-            // disabled={ ? true : false}
-            //if total_count > 10
-          >
-            &#187;
-          </button>
+          {p} <button onClick={() => this.handlePageSubmit(1)}>&#187;</button>
         </div>
       </div>
     );

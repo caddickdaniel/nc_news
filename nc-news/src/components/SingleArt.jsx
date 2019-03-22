@@ -21,15 +21,14 @@ class SingleArt extends Component {
     getSingleArticle(article_id)
       .then(data => this.setState({ article: data.article }))
       .catch(err => {
-        console.dir(err) ||
-          this.setState({
-            errStatus: {
-              message:
-                err.response.data.message || "Sorry this page cannot be found",
-              status: err.response.request.status || 400
-            },
-            replace: true
-          });
+        this.setState({
+          errStatus: {
+            message:
+              err.response.data.message || "Sorry this page cannot be found",
+            status: err.response.request.status || 400
+          },
+          replace: true
+        });
       });
   }
 
@@ -47,7 +46,6 @@ class SingleArt extends Component {
   render() {
     const { article } = this.state;
     const { article_id, comment_id } = this.props;
-    console.log(comment_id);
 
     const bodyStyling = {
       margin: "50px",
@@ -77,7 +75,7 @@ class SingleArt extends Component {
 
     const { username } = this.props;
     const { errStatus } = this.state;
-    console.log(username, article.author);
+
     if (errStatus) return <Error errStatus={errStatus} />;
     return (
       <div>

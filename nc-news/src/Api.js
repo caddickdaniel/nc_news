@@ -14,30 +14,6 @@ export const getArticles = (p, sort_by, order, topic) => {
     })
     .then(({ data }) => data);
 };
-// if (page) {
-//   return axios.get(`${url}articles?p=${page}`).then(({ data }) => data);
-// if (sort) {
-//   return axios
-//     .get(`${url}articles?p=${page}&?sort_by=${sort}`)
-//     .then(({ data }) => data);
-// } else if (order) {
-//   return axios
-//     .get(`${url}articles?p=${page}&?order=${order}`)
-//     .then(({ data }) => data);
-// } else if (sort && order) {
-//   return axios
-//     .get(`${url}articles?p=${page}&?sort_by=${sort}&?order=${order}`)
-//     .then(({ data }) => data);
-// } else {
-//   return axios.get(`${url}articles?p=${page}`).then(({ data }) => data);
-// }
-
-// export const getArticlesByTopic = topic => {
-//   // console.log(topic)
-//   return axios
-//     .get(`${url}articles?topic=${topic}`)
-//     .then(({ data }) => console.log(data) || data);
-// };
 
 export const getSingleArticle = id => {
   return axios.get(`${url}articles/${id}`).then(({ data }) => data);
@@ -65,4 +41,3 @@ export const postComment = (article_id, post) => {
     .post(`${url}articles/${article_id}/comments`, { ...post })
     .then(({ data }) => data);
 };
-//WILL EVENTUALLY REFORMAT TO REDUCE THE AMOUNT OF FUNCTIONS

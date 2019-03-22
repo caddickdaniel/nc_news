@@ -14,7 +14,7 @@ class PostUser extends Component {
 
   handleChange = event => {
     const { name, value } = event.target;
-    console.log(name, value);
+
     this.setState(state => ({ ...state, [name]: value }));
   };
 
@@ -26,29 +26,26 @@ class PostUser extends Component {
       avatar_url: this.state.avatar_url,
       name: this.state.name
     };
-    // console.log(this.state)
+
     axios
       .post(`${url}users`, { ...post })
       .then(({ data }) => {
-        console.log(post);
         navigate(`/users`);
       })
       .catch(err => {
-        console.dir(err) ||
-          this.setState({
-            errStatus: {
-              message:
-                err.response.data.message ||
-                "Sorry this task cannot be completed",
-              status: err.response.request.status || 400
-            },
-            replace: true
-          });
+        this.setState({
+          errStatus: {
+            message:
+              err.response.data.message ||
+              "Sorry this task cannot be completed",
+            status: err.response.request.status || 400
+          },
+          replace: true
+        });
       });
   };
 
   render() {
-    //   console.log(this.props)
     const userStyle = {
       textAlign: "center"
     };

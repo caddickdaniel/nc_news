@@ -13,7 +13,7 @@ class PostTopic extends Component {
 
   handleChange = event => {
     const { name, value } = event.target;
-    console.log(name, value);
+
     this.setState(state => ({ ...state, [name]: value }));
   };
 
@@ -24,24 +24,22 @@ class PostTopic extends Component {
       slug: this.state.slug,
       description: this.state.description
     };
-    // console.log(this.state)
+
     axios
       .post(`${url}topics`, { ...post })
       .then(({ data }) => {
-        //   console.log(data)
         navigate("/topics");
       })
       .catch(err => {
-        console.dir(err) ||
-          this.setState({
-            errStatus: {
-              message:
-                err.response.data.message ||
-                "Sorry you entered an incorrect format",
-              status: err.response.request.status || 400
-            },
-            replace: true
-          });
+        this.setState({
+          errStatus: {
+            message:
+              err.response.data.message ||
+              "Sorry you entered an incorrect format",
+            status: err.response.request.status || 400
+          },
+          replace: true
+        });
       });
   };
 
@@ -49,12 +47,10 @@ class PostTopic extends Component {
     const { description, slug } = this.state;
 
     if (prevState.slug !== slug || prevState.description !== description) {
-      //I want to render all the topics including newest
     }
   }
 
   render() {
-    //   console.log(this.props)
     const topicStyle = {
       textAlign: "center"
     };

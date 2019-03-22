@@ -8,7 +8,7 @@ class PostComment extends Component {
 
   handleChange = event => {
     const { name, value } = event.target;
-    console.log(name, value);
+
     this.setState(state => ({ ...state, [name]: value }));
   };
 
@@ -24,7 +24,6 @@ class PostComment extends Component {
   };
 
   render() {
-    //   console.log(this.props)
     const commentStyle = {
       textAlign: "center"
     };

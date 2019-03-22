@@ -22,15 +22,14 @@ class App extends Component {
     event.preventDefault();
     getUsers(username)
       .catch(err => {
-        console.dir(err) ||
-          this.setState({
-            errStatus: {
-              message:
-                err.response.data.message || "Sorry this username is invalid",
-              status: err.response.request.status || 400
-            },
-            replace: true
-          });
+        this.setState({
+          errStatus: {
+            message:
+              err.response.data.message || "Sorry this username is invalid",
+            status: err.response.request.status || 400
+          },
+          replace: true
+        });
       })
       .then(() => {
         this.setState({ username });
@@ -40,16 +39,11 @@ class App extends Component {
   };
 
   render() {
-    const { username, loggedIn } = this.state;
-    console.log(username);
+    const { username, errStatus } = this.state;
+    if (errStatus) return <Error errStatus={errStatus} />;
     return (
       <Fragment>
-        <SignIn
-          path="/"
-          handleSignIn={this.handleSignIn}
-          loggedIn={loggedIn}
-          username={username}
-        >
+        <SignIn path="/" handleSignIn={this.handleSignIn} username={username}>
           <Router>
             <Home path="/home" />
             <Home path="articles/topic/:topic" />

@@ -13,19 +13,17 @@ export class Topics extends Component {
   };
 
   componentDidMount() {
-    console.log("component mounted!");
     getTopics()
       .then(data => this.setState({ topics: data.topics, isLoading: false }))
       .catch(err => {
-        console.dir(err) ||
-          this.setState({
-            errStatus: {
-              message:
-                err.response.data.message || "Sorry this page cannot be found",
-              status: err.response.request.status || 400
-            },
-            replace: true
-          });
+        this.setState({
+          errStatus: {
+            message:
+              err.response.data.message || "Sorry this page cannot be found",
+            status: err.response.request.status || 400
+          },
+          replace: true
+        });
       });
   }
 
@@ -44,7 +42,6 @@ export class Topics extends Component {
         </div>
       );
     });
-    console.log(topicItems);
     if (isLoading) return <p>Loading...</p>;
     else if (errStatus) return <Error errStatus={errStatus} />;
     return (

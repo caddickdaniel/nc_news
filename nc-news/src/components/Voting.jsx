@@ -22,30 +22,26 @@ class Voting extends Component {
       });
     };
 
-    // console.log(this.props);
     if (comment_id) {
       voteInc(article_id, comment_id, inc);
     } else voteInc(article_id, comment_id, inc);
     this.setState(state => ({
       voteChange: state.voteChange + inc
     })).catch(err => {
-      console.dir(err) ||
-        this.setState({
-          errStatus: {
-            message:
-              err.response.data.message ||
-              "Sorry this task cannot be completed",
-            status: err.response.request.status || 400
-          },
-          replace: true
-        });
+      this.setState({
+        errStatus: {
+          message:
+            err.response.data.message || "Sorry this task cannot be completed",
+          status: err.response.request.status || 400
+        },
+        replace: true
+      });
     });
   };
 
   render() {
     const { votes } = this.props;
     const { voteChange, errStatus } = this.state;
-    // console.log("votes = ", votes);
 
     const voteButton = {
       textAlign: "center"

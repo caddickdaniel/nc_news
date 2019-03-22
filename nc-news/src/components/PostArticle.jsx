@@ -13,22 +13,21 @@ class PostArticle extends Component {
 
   handleChange = event => {
     const { name, value } = event.target;
-    console.log(name, value);
+
     this.setState(state => ({ ...state, [name]: value }));
   };
 
   handlePostSubmit = event => {
     event.preventDefault();
-    //what do you want to send
+
     const post = {
       title: this.state.title,
       topic: this.state.topic,
       body: this.state.body,
       author: "grumpy19"
     };
-    console.log(post);
+
     axios.post(`${url}articles`, { ...post }).then(({ data }) => {
-      console.log(data);
       navigate(`/articles/${data.article.article_id}`);
     });
   };

@@ -12,19 +12,17 @@ export class Users extends Component {
   };
 
   componentDidMount() {
-    console.log("component mounted!");
     getUsers()
       .then(data => this.setState({ users: data.users, isLoading: false }))
       .catch(err => {
-        console.dir(err) ||
-          this.setState({
-            errStatus: {
-              message:
-                err.response.data.message || "Sorry, this page cannot be found",
-              status: err.response.request.status || 400
-            },
-            replace: true
-          });
+        this.setState({
+          errStatus: {
+            message:
+              err.response.data.message || "Sorry, this page cannot be found",
+            status: err.response.request.status || 400
+          },
+          replace: true
+        });
       });
   }
 
@@ -61,7 +59,6 @@ export class Users extends Component {
         </div>
       );
     });
-    // console.log(userItems);
     return (
       <div>
         <header className="Home-header">

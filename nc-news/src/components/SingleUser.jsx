@@ -12,17 +12,16 @@ class SingleUser extends Component {
   componentDidMount() {
     const { user } = this.props;
     getUsers(user)
-      .then(data => console.log(user) || this.setState({ user: data.user }))
+      .then(data => this.setState({ user: data.user }))
       .catch(err => {
-        console.dir(err) ||
-          this.setState({
-            errStatus: {
-              message:
-                err.response.data.message || "Sorry this page cannot be found",
-              status: err.response.request.status || 400
-            },
-            replace: true
-          });
+        this.setState({
+          errStatus: {
+            message:
+              err.response.data.message || "Sorry this page cannot be found",
+            status: err.response.request.status || 400
+          },
+          replace: true
+        });
       });
   }
 
