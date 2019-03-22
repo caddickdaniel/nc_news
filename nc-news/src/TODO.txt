@@ -1,0 +1,5 @@
+1. Optimistically render the posting of a comment and topic
+2. Needs styling done and a media query for mobile users
+3. Disable the next page button when there are no articles to render
+4. Add a loading bar rather than plain text
+5. Put some details into single user page (only getting a name on my 'user' obj in SingleUser)

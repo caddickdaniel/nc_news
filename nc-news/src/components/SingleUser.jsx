@@ -11,6 +11,7 @@ class SingleUser extends Component {
 
   componentDidMount() {
     const { user } = this.props;
+
     getUsers(user)
       .then(data => this.setState({ user: data.user }))
       .catch(err => {

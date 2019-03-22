@@ -3,6 +3,7 @@ import { getUsers } from "../Api";
 import PostUser from "./PostUser";
 import NavButtons from "./NavButtons";
 import Error from "./Error";
+import { Link } from "@reach/router";
 
 export class Users extends Component {
   state = {
@@ -46,14 +47,16 @@ export class Users extends Component {
         <div className="Users">
           <div style={userStyle}>
             <h2 className="User-name">Name: {user.name} </h2>
-            <p>
+            <div>
               <img
                 style={imgStyle}
                 src="https://cdn-images-1.medium.com/max/1200/1*MccriYX-ciBniUzRKAUsAw.png"
                 alt="Avatar"
-              />{" "}
-              Username:{user.username}
-            </p>
+              />
+            </div>
+            <Link to={`/user/${user.username}`}>
+              <p>Username:{user.username}</p>
+            </Link>
           </div>
           <hr />
         </div>
