@@ -93,7 +93,15 @@ class Home extends Component {
     const { topic, username } = this.props;
 
     const postStyle = { float: "right" };
-    if (isLoading) return <p>Loading...</p>;
+    if (isLoading)
+      return (
+        <div class="lds-ring">
+          <div />
+          <div />
+          <div />
+          <div />
+        </div>
+      );
     else if (errStatus) return <Error errStatus={errStatus} />;
     else if (!articles) {
       return <p>Sorry, there aren't any articles on this topic</p>;

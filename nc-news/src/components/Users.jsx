@@ -41,7 +41,15 @@ export class Users extends Component {
     };
 
     const userItems = this.state.users.map(user => {
-      if (isLoading) return <p>Loading...</p>;
+      if (isLoading)
+        return (
+          <div class="lds-ring">
+            <div />
+            <div />
+            <div />
+            <div />
+          </div>
+        );
       else if (errStatus) return <Error errStatus={errStatus} />;
       return (
         <div className="Users">

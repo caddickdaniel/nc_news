@@ -42,7 +42,15 @@ export class Topics extends Component {
         </div>
       );
     });
-    if (isLoading) return <p>Loading...</p>;
+    if (isLoading)
+      return (
+        <div class="lds-ring">
+          <div />
+          <div />
+          <div />
+          <div />
+        </div>
+      );
     else if (errStatus) return <Error errStatus={errStatus} />;
     return (
       <div>
