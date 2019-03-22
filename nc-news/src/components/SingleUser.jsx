@@ -1,18 +1,29 @@
 import React, { Component } from "react";
 import { getUsers } from "../Api";
 import NavButtons from "./NavButtons";
+import Error from "./Error";
 
 class SingleUser extends Component {
   state = {
-    user: {}
+    user: {},
+    errStatus: false
   };
 
   componentDidMount() {
     const { user } = this.props;
-    // console.dir(username)
-    getUsers(user).then(
-      data => console.log(user) || this.setState({ user: data.user })
-    );
+    getUsers(user)
+      .then(data => console.log(user) || this.setState({ user: data.user }))
+      .catch(err => {
+        console.dir(err) ||
+          this.setState({
+            errStatus: {
+              message:
+                err.response.data.message || "Sorry this page cannot be found",
+              status: err.response.request.status || 400
+            },
+            replace: true
+          });
+      });
   }
 
   render() {
@@ -20,6 +31,9 @@ class SingleUser extends Component {
       textTransform: "capitalize",
       marginLeft: "1em"
     };
+    const { errStatus } = this.state;
+
+    if (errStatus) return <Error errStatus={errStatus} />;
 
     return (
       <div>

@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { url } from "../Api";
+import Error from "./Error";
 
 class Voting extends Component {
   state = {
-    voteChange: 0
+    voteChange: 0,
+    errStatus: false
   };
 
   addVote = inc => {
@@ -26,17 +28,30 @@ class Voting extends Component {
     } else voteInc(article_id, comment_id, inc);
     this.setState(state => ({
       voteChange: state.voteChange + inc
-    }));
+    })).catch(err => {
+      console.dir(err) ||
+        this.setState({
+          errStatus: {
+            message:
+              err.response.data.message ||
+              "Sorry this task cannot be completed",
+            status: err.response.request.status || 400
+          },
+          replace: true
+        });
+    });
   };
 
   render() {
     const { votes } = this.props;
-    const { voteChange } = this.state;
+    const { voteChange, errStatus } = this.state;
     // console.log("votes = ", votes);
 
     const voteButton = {
       textAlign: "center"
     };
+
+    if (errStatus) return <Error errStatus={errStatus} />;
 
     return (
       <div style={voteButton}>

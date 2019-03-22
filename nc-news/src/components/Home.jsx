@@ -9,7 +9,6 @@ import Error from "./Error";
 
 class Home extends Component {
   state = {
-    username: this.props,
     p: 1,
     sort_by: null,
     order: null,
@@ -31,8 +30,9 @@ class Home extends Component {
         console.dir(err) ||
           this.setState({
             errStatus: {
-              message: err.response.data.message,
-              status: err.response.data.status
+              message:
+                err.response.data.message || "Sorry this page cannot be found",
+              status: err.response.request.status || 400
             },
             replace: true
           });
@@ -67,8 +67,9 @@ class Home extends Component {
       .catch(err => {
         this.setState({
           errStatus: {
-            message: err.response.data.message,
-            status: err.response.data.status
+            message:
+              err.response.data.message || "Sorry this page cannot be found",
+            status: err.response.request.status || 400
           },
           replace: true
         });
@@ -95,8 +96,10 @@ class Home extends Component {
           console.dir(err) ||
             this.setState({
               errStatus: {
-                message: err.message,
-                status: err.status
+                message:
+                  err.response.data.message ||
+                  "Sorry this page cannot be found",
+                status: err.response.request.status || 400
               },
               replace: true
             });
@@ -112,6 +115,9 @@ class Home extends Component {
     const postStyle = { float: "right" };
     if (isLoading) return <p>Loading...</p>;
     else if (errStatus) return <Error errStatus={errStatus} />;
+    else if (!articles) {
+      return <p>Sorry, there aren't any articles on this topic</p>;
+    }
     return (
       <div className="Home">
         <header className="Home-header">

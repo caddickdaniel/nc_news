@@ -7,9 +7,13 @@ import PostComment from "./PostComment";
 class Comments extends Component {
   state = {
     comments: [],
-    username: "grumpy19",
     didDelete: 0
   };
+
+  optimisticPostRender(post) {
+    const { comments } = this.state;
+    comments.push(post);
+  }
 
   componentDidMount() {
     const { article_id } = this.props;
@@ -53,8 +57,7 @@ class Comments extends Component {
       textAlign: "center"
     };
 
-    const { article_id } = this.props;
-    const { comments } = this.state;
+    const { article_id, username } = this.props;
 
     const commentItems = this.state.comments.map(comment => {
       return (
@@ -62,7 +65,7 @@ class Comments extends Component {
           <hr />
           <h3 style={bodyStyle}>{comment.body}</h3>
           <div style={deleteButton}>
-            {this.state.username === comment.author && (
+            {username === comment.author && (
               <button
                 onClick={this.handleDelete}
                 id={comment.comment_id}
@@ -90,7 +93,10 @@ class Comments extends Component {
           {commentItems}
         </div>
         <div>
-          <PostComment article_id={article_id} />
+          <PostComment
+            article_id={article_id}
+            optimisticPostRender={this.optimisticPostRender}
+          />
         </div>
       </div>
     );

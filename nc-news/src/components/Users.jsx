@@ -2,22 +2,34 @@ import React, { Component } from "react";
 import { getUsers } from "../Api";
 import PostUser from "./PostUser";
 import NavButtons from "./NavButtons";
+import Error from "./Error";
 
 export class Users extends Component {
   state = {
     users: [],
-    isLoading: true
+    isLoading: true,
+    errStatus: false
   };
 
   componentDidMount() {
     console.log("component mounted!");
-    getUsers().then(data =>
-      this.setState({ users: data.users, isLoading: false })
-    );
+    getUsers()
+      .then(data => this.setState({ users: data.users, isLoading: false }))
+      .catch(err => {
+        console.dir(err) ||
+          this.setState({
+            errStatus: {
+              message:
+                err.response.data.message || "Sorry, this page cannot be found",
+              status: err.response.request.status || 400
+            },
+            replace: true
+          });
+      });
   }
 
   render() {
-    const { isLoading } = this.state;
+    const { isLoading, errStatus } = this.state;
     const userStyle = {
       marginLeft: "10em",
       marginRight: "40em"
@@ -31,6 +43,7 @@ export class Users extends Component {
 
     const userItems = this.state.users.map(user => {
       if (isLoading) return <p>Loading...</p>;
+      else if (errStatus) return <Error errStatus={errStatus} />;
       return (
         <div className="Users">
           <div style={userStyle}>

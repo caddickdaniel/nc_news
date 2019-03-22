@@ -4,7 +4,7 @@ import Comments from "./Comments";
 import { Link } from "@reach/router";
 import axios from "axios";
 import { navigate } from "@reach/router";
-import PostComment from "./PostComment";
+import Error from "./Error";
 import { url } from "../Api";
 import NavButtons from "./NavButtons";
 import Voting from "./Voting";
@@ -12,15 +12,25 @@ import Voting from "./Voting";
 class SingleArt extends Component {
   state = {
     article: {},
-    username: "grumpy19"
+    errStatus: false
   };
 
   componentDidMount() {
     const { article_id } = this.props;
 
-    getSingleArticle(article_id).then(data =>
-      this.setState({ article: data.article })
-    );
+    getSingleArticle(article_id)
+      .then(data => this.setState({ article: data.article }))
+      .catch(err => {
+        console.dir(err) ||
+          this.setState({
+            errStatus: {
+              message:
+                err.response.data.message || "Sorry this page cannot be found",
+              status: err.response.request.status || 400
+            },
+            replace: true
+          });
+      });
   }
 
   handleDelete = event => {
@@ -36,8 +46,7 @@ class SingleArt extends Component {
 
   render() {
     const { article } = this.state;
-    const { article_id } = this.props;
-    const { comment_id } = this.props;
+    const { article_id, comment_id } = this.props;
     console.log(comment_id);
 
     const bodyStyling = {
@@ -66,6 +75,10 @@ class SingleArt extends Component {
       marginLeft: "3em"
     };
 
+    const { username } = this.props;
+    const { errStatus } = this.state;
+    console.log(username, article.author);
+    if (errStatus) return <Error errStatus={errStatus} />;
     return (
       <div>
         <header className="Home-header">
@@ -82,7 +95,7 @@ class SingleArt extends Component {
         <h3 style={topicStyling}>{article.title}</h3>
         <small style={authStyle}> Author: {article.author}</small>
         <div style={deleteButton}>
-          {this.state.username === article.author && (
+          {username === article.author && (
             <form onSubmit={this.handleDelete}>
               <button type="submit">Delete Post</button>
             </form>
@@ -93,7 +106,11 @@ class SingleArt extends Component {
         <Voting votes={article.votes} article_id={article_id} />
         <br />
         <div>
-          <Comments article_id={article_id} comment_id={comment_id} />
+          <Comments
+            article_id={article_id}
+            comment_id={comment_id}
+            username={username}
+          />
         </div>
       </div>
     );

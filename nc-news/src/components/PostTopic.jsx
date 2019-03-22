@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import axios from "axios";
 import { navigate } from "@reach/router";
 import { url } from "../Api";
+import Error from "./Error";
 
 class PostTopic extends Component {
   state = {
     description: "",
-    slug: ""
+    slug: "",
+    errStatus: false
   };
 
   handleChange = event => {
@@ -29,7 +31,18 @@ class PostTopic extends Component {
         //   console.log(data)
         navigate("/topics");
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.dir(err) ||
+          this.setState({
+            errStatus: {
+              message:
+                err.response.data.message ||
+                "Sorry you entered an incorrect format",
+              status: err.response.request.status || 400
+            },
+            replace: true
+          });
+      });
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -45,6 +58,9 @@ class PostTopic extends Component {
     const topicStyle = {
       textAlign: "center"
     };
+    const { errStatus } = this.state;
+
+    if (errStatus) return <Error errStatus={errStatus} />;
     return (
       <div style={topicStyle}>
         <h2>Add Topic</h2>

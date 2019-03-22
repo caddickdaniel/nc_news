@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const url = "https://afternoon-beyond-70751.herokuapp.com/api/";
+export const url = "https://nc-newz.herokuapp.com/api/";
 
 export const getArticles = (p, sort_by, order, topic) => {
   return axios

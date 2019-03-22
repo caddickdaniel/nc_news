@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import axios from "axios";
 import { navigate } from "@reach/router";
 import { url } from "../Api";
+import Error from "./Error";
 
 class PostUser extends Component {
   state = {
     username: "",
     avatar_url: "",
-    name: ""
+    name: "",
+    errStatus: false
   };
 
   handleChange = event => {
@@ -25,10 +27,24 @@ class PostUser extends Component {
       name: this.state.name
     };
     // console.log(this.state)
-    axios.post(`${url}users`, { ...post }).then(({ data }) => {
-      console.log(post);
-      navigate(`/users`);
-    });
+    axios
+      .post(`${url}users`, { ...post })
+      .then(({ data }) => {
+        console.log(post);
+        navigate(`/users`);
+      })
+      .catch(err => {
+        console.dir(err) ||
+          this.setState({
+            errStatus: {
+              message:
+                err.response.data.message ||
+                "Sorry this task cannot be completed",
+              status: err.response.request.status || 400
+            },
+            replace: true
+          });
+      });
   };
 
   render() {
@@ -36,6 +52,9 @@ class PostUser extends Component {
     const userStyle = {
       textAlign: "center"
     };
+    const { errStatus } = this.state;
+
+    if (errStatus) return <Error errStatus={errStatus} />;
     return (
       <div style={userStyle}>
         <h2>Add User</h2>

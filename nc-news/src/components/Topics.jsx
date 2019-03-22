@@ -3,6 +3,7 @@ import { getTopics } from "../Api";
 import { Link } from "@reach/router";
 import PostTopic from "./PostTopic";
 import NavButtons from "./NavButtons";
+import Error from "./Error";
 
 export class Topics extends Component {
   state = {
@@ -19,8 +20,9 @@ export class Topics extends Component {
         console.dir(err) ||
           this.setState({
             errStatus: {
-              message: err.response.data.message,
-              status: err.response.data.status
+              message:
+                err.response.data.message || "Sorry this page cannot be found",
+              status: err.response.request.status || 400
             },
             replace: true
           });
@@ -28,7 +30,7 @@ export class Topics extends Component {
   }
 
   render() {
-    const { isLoading } = this.state;
+    const { isLoading, errStatus } = this.state;
     const topicItems = this.state.topics.map(topic => {
       return (
         <div className="Topics">
@@ -44,6 +46,7 @@ export class Topics extends Component {
     });
     console.log(topicItems);
     if (isLoading) return <p>Loading...</p>;
+    else if (errStatus) return <Error errStatus={errStatus} />;
     return (
       <div>
         <header className="Home-header">

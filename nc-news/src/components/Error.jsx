@@ -3,11 +3,12 @@ import React, { Component } from "react";
 class Error extends Component {
   render() {
     const { errStatus } = this.props;
-    console.dir(errStatus);
+
     return (
       <div>
         <h1>Error</h1>
-        <p>{errStatus}</p>
+        <p>{(errStatus && errStatus.message) || "Page not found"} </p>
+        <p>Status:{(errStatus && errStatus.status) || 404}</p>
       </div>
     );
   }

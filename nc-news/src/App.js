@@ -9,41 +9,59 @@ import SingleArt from "./components/SingleArt";
 import PostArticle from "./components/PostArticle";
 import SingleUser from "./components/SingleUser";
 import Error from "./components/Error";
-// import { validateUser } from "./Api";
+import { getUsers } from "./Api";
+import { navigate } from "@reach/router";
 
 class App extends Component {
   state = {
-    username: null
+    username: null,
+    errStatus: false
   };
 
   handleSignIn = (event, username) => {
     event.preventDefault();
-    this.setState({ username });
+    getUsers(username)
+      .catch(err => {
+        console.dir(err) ||
+          this.setState({
+            errStatus: {
+              message:
+                err.response.data.message || "Sorry this username is invalid",
+              status: err.response.request.status || 400
+            },
+            replace: true
+          });
+      })
+      .then(() => {
+        this.setState({ username });
+        navigate("/home");
+      });
     window.localStorage.setItem("username", username);
-    // validateUser(username);
   };
 
   render() {
-    const { username } = this.state;
+    const { username, loggedIn } = this.state;
     console.log(username);
     return (
       <Fragment>
-        {/* {username && console.log('******') && */}
-        {/* <SignIn path="/" handleSignIn={this.handleSignIn}> */}
-        <Router>
-          <SignIn path="/" handleSignIn={this.handleSignIn} />
-          <Home path="/home" username={username} />
-          <Home path="articles/topic/:topic" />
-          <Home path="articles/topic/:slug" />
-          <Topics path="/topics" />
-          <Users path="/users" />
-          <SingleArt path="/articles/:article_id" />
-          <SingleUser path="/user/:user" />
-          <PostArticle path="/postarticle" />
-          <Error default path="/error" />
-        </Router>{" "}
-        {/* </SignIn> */}
-        {/*}*/}
+        <SignIn
+          path="/"
+          handleSignIn={this.handleSignIn}
+          loggedIn={loggedIn}
+          username={username}
+        >
+          <Router>
+            <Home path="/home" />
+            <Home path="articles/topic/:topic" />
+            <Home path="articles/topic/:slug" />
+            <Topics path="/topics" />
+            <Users path="/users" />
+            <SingleArt path="/articles/:article_id" username={username} />
+            <SingleUser path="/user/:user" />
+            <PostArticle path="/postarticle" />
+            <Error default />
+          </Router>{" "}
+        </SignIn>
       </Fragment>
     );
   }
