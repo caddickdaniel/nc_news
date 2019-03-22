@@ -3,3 +3,4 @@
 3. Disable the next page button when there are no articles to render
 4. Add a loading bar rather than plain text
 5. Put some details into single user page (only getting a name on my 'user' obj in SingleUser)
+6. Need to move handlers to the handlers folder, only leaving the componentDidMount and componentDidUpdate in my components
