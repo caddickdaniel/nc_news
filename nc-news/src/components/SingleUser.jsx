@@ -13,7 +13,7 @@ class SingleUser extends Component {
     const { user } = this.props;
 
     getUsers(user)
-      .then(data => this.setState({ user: data.user }))
+      .then(data => console.log(data) || this.setState({ user: data.user }))
       .catch(err => {
         this.setState({
           errStatus: {
@@ -39,15 +39,15 @@ class SingleUser extends Component {
       <div>
         <header className="Home-header">
           <h1 className="Home-title">NC News</h1>
-          <h2 style={capitalise}>{this.props.user}</h2>
+          <h2 style={capitalise}>{this.state.user.username}</h2>
           <hr />
           <hr />
         </header>
         <NavButtons />
         <hr />
-        <h1 className="ArtText">{this.props.user}</h1>
-        <h2>{this.props.user.name}</h2>
-        <img src={this.props.user.avatar_url} alt="avatar" />
+        <h1 className="ArtText">{this.state.user.username}</h1>
+        <h2>{this.state.user.name}</h2>
+        <img src={this.state.user.avatar_url} alt="avatar" />
       </div>
     );
   }
