@@ -48,6 +48,7 @@ The only technology used in the development of this application is React. I felt
 
 The API I created originally to accompany my Front-end (linked at the top) was built using Postgres and Express. With mocha and chai used for testing purposes.
 
-## Contributors
+## Contributors & Resources
 
-Danny Caddick [caddickdaniel](https://github.com/caddickdaniel)
+Danny Caddick [GitHub: caddickdaniel](https://github.com/caddickdaniel)
+React [Documentation](https://reactjs.org/docs/hello-world.html)
