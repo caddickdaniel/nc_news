@@ -90,7 +90,8 @@ class Home extends Component {
 
   render() {
     const { articles, p, isLoading, errStatus } = this.state;
-    const { topic } = this.props;
+    const { topic, username } = this.props;
+
     const postStyle = { float: "right" };
     if (isLoading) return <p>Loading...</p>;
     else if (errStatus) return <Error errStatus={errStatus} />;
@@ -101,7 +102,7 @@ class Home extends Component {
       <div className="Home">
         <header className="Home-header">
           <h1 className="Home-title">NC News</h1>
-          <h2 className="Welcome">Welcome to NC News {this.props.username}</h2>
+          <h2 className="Welcome">Welcome to NC News {username}</h2>
           <hr />
           <hr />
         </header>

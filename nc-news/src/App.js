@@ -45,9 +45,9 @@ class App extends Component {
       <Fragment>
         <SignIn path="/" handleSignIn={this.handleSignIn} username={username}>
           <Router>
-            <Home path="/home" />
-            <Home path="articles/topic/:topic" />
-            <Home path="articles/topic/:slug" />
+            <Home path="/home" username={username} />
+            <Home path="articles/topic/:topic" username={username} />
+            <Home path="articles/topic/:slug" username={username} />
             <Topics path="/topics" />
             <Users path="/users" />
             <SingleArt path="/articles/:article_id" username={username} />
