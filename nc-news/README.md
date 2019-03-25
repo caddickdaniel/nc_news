@@ -8,7 +8,7 @@ This application allows you to browse user articles, post articles of your own, 
 
 ### Prerequisites
 
-You will need an editor such as VS Code, as well as Node.js (no later than v11.0) and Node Package Manager (no later than 6.4.1) up and running on your machine.
+You will need an editor such as VS Code, as well as Node.js (v11.0 or later) and Node Package Manager (no later than 6.4.1) up and running on your machine.
 
 ## Installing
 
@@ -18,7 +18,9 @@ First off you want to fork the repo from GitHub. To do this click on the fork op
 
 Then you want to clone the repo. To do this you want to select clone repo, copy the link provided and paste that link into your terminal in an appropriate folder like so
 
-`git clone https://github.com/caddickdaniel/BE2-NC-Knews.git`
+```bash
+git clone https://github.com/caddickdaniel/BE2-NC-Knews.git
+```
 
 This will download the repo onto your machine. You want to then open the repo using your code editor.
 

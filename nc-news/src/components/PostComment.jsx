@@ -17,7 +17,8 @@ class PostComment extends Component {
     const { article_id, optimisticPostRender } = this.props;
     const post = {
       body: this.state.body,
-      author: "grumpy19"
+      author: this.props.username
+      //can I access window.localstorage for this value?
     };
     postComment(article_id, post);
     optimisticPostRender(post);
@@ -33,14 +34,12 @@ class PostComment extends Component {
         <form onSubmit={this.handleCommentSubmit}>
           <div>
             <label>Body: </label>
-            <br />
             <textarea
               name="body"
               onChange={this.handleChange}
               value={this.state.body}
             />
           </div>
-          <br />
           <button type="submit">Submit</button>
         </form>
       </div>

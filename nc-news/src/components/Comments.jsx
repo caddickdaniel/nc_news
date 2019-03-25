@@ -58,11 +58,11 @@ class Comments extends Component {
     };
 
     const { article_id, username } = this.props;
+    const { comments } = this.state;
 
     const commentItems = this.state.comments.map(comment => {
       return (
         <div>
-          <hr />
           <h3 style={bodyStyle}>{comment.body}</h3>
           <div style={deleteButton}>
             {username === comment.author && (
@@ -81,14 +81,12 @@ class Comments extends Component {
             comment_id={comment.comment_id}
             article_id={comment.article_id}
           />
-          <hr />
         </div>
       );
     });
     return (
       <div>
         <div id="#comments">
-          <hr />
           <h2 style={commTitle}>Comments</h2>
           {commentItems}
         </div>
@@ -96,6 +94,8 @@ class Comments extends Component {
           <PostComment
             article_id={article_id}
             optimisticPostRender={this.optimisticPostRender}
+            comments={comments}
+            username={username}
           />
         </div>
       </div>

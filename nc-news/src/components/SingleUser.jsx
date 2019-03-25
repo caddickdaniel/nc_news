@@ -41,11 +41,8 @@ class SingleUser extends Component {
         <header className="Home-header">
           <h1 className="Home-title">NC News</h1>
           <h2 style={capitalise}>{this.state.user.username}</h2>
-          <hr />
-          <hr />
         </header>
         <NavButtons />
-        <hr />
         <h1 className="ArtText">{this.state.user.username}</h1>
         <h2>{this.state.user.name}</h2>
         <img src={this.state.user.avatar_url} alt="avatar" />

@@ -81,11 +81,8 @@ class SingleArt extends Component {
       <div>
         <header className="Home-header">
           <h1 className="Home-title">NC News</h1>
-          <hr />
-          <hr />
-          <NavButtons />
-          <hr />
         </header>
+        <NavButtons />
 
         <Link to={`/articles/topic/${article.topic}`}>
           <h2 style={topicStyling}>{article.topic}</h2>
@@ -100,9 +97,8 @@ class SingleArt extends Component {
           )}
         </div>
         <p style={bodyStyling}>{article.body}</p>
-        <hr />
+
         <Voting votes={article.votes} article_id={article_id} />
-        <br />
         <div>
           <Comments
             article_id={article_id}

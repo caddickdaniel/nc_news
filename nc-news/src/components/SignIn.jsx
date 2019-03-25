@@ -33,9 +33,8 @@ class SignIn extends Component {
             onChange={this.handleChange}
             required
           />
-          <button type="submit">Submit</button>
+          <button type="submit">Login</button>
         </form>
-        <br />
       </div>
     );
   }

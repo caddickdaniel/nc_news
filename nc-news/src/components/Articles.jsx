@@ -1,39 +1,47 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
+import "../styling/App.css";
 
 export class Articles extends Component {
   render() {
-    const { articles, topic } = this.props;
+    const { articles, topic, isLoading } = this.props;
     const articleItems = articles.map(article => {
       return (
         <div className="Articles" key={article.article_id}>
           <Link to={`/articles/${article.article_id}`}>
             <h2 className="Article-title">{article.title}</h2>
           </Link>
-          <div className="Author">
+          <div>
             <Link to={`/articles/topic/${article.topic}`}>
-              <p>Topic: {article.topic}</p>
+              <p className="Author">Topic: {article.topic}</p>
             </Link>
             <Link to={`/user/${article.author}`}>
-              <p>Author: {article.author}</p>
+              <p className="Author">Author: {article.author}</p>
             </Link>
-            <p>
+            <p className="Author">
               Created:{" "}
               {article.created_at.slice(0, 19).replace(/[a-zA-Z]/, " At: ")}
             </p>
           </div>
           <p className="Article-body">{article.body.slice(0, 250)}...</p>
-          <hr />
-          <small className="Comments">
+          <small>
             <Link to={`/articles/${article.article_id}#comments`}>
               {" "}
-              Comments: {article.comment_count}{" "}
+              <p className="Comments">Comments: {article.comment_count} </p>
             </Link>
           </small>{" "}
-          <hr />
         </div>
       );
     });
+    if (isLoading)
+      return (
+        <div class="lds-ring">
+          <div />
+          <div />
+          <div />
+          <div />
+        </div>
+      );
     return (
       <div>
         {topic ? (

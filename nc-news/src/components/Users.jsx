@@ -4,6 +4,7 @@ import PostUser from "./PostUser";
 import NavButtons from "./NavButtons";
 import Error from "./Error";
 import { Link } from "@reach/router";
+import "../styling/App.css";
 
 export class Users extends Component {
   state = {
@@ -54,19 +55,19 @@ export class Users extends Component {
       return (
         <div className="Users">
           <div style={userStyle}>
-            <h2 className="User-name">Name: {user.name} </h2>
+            <h2 className="User-name">{user.name} </h2>
             <div>
               <img
+                className="Avatar-img"
                 style={imgStyle}
                 src="https://cdn-images-1.medium.com/max/1200/1*MccriYX-ciBniUzRKAUsAw.png"
                 alt="Avatar"
               />
             </div>
             <Link to={`/user/${user.username}`}>
-              <p>Username:{user.username}</p>
+              <p className="User-username">Username:{user.username}</p>
             </Link>
           </div>
-          <hr />
         </div>
       );
     });
@@ -75,11 +76,8 @@ export class Users extends Component {
         <header className="Home-header">
           <h1 className="Home-title">NC News</h1>
           <h2 className="Home-title">Search Users</h2>
-          <hr />
         </header>
-        <hr />
         <NavButtons />
-        <hr />
         <h1 className="ArtText">Users</h1>
         {userItems}
         <div>

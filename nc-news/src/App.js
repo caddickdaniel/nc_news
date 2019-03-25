@@ -10,7 +10,6 @@ import PostArticle from "./components/PostArticle";
 import SingleUser from "./components/SingleUser";
 import Error from "./components/Error";
 import { getUsers } from "./Api";
-import { navigate } from "@reach/router";
 
 class App extends Component {
   state = {
@@ -33,14 +32,27 @@ class App extends Component {
       })
       .then(() => {
         this.setState({ username });
-        navigate("/home");
       });
     window.localStorage.setItem("username", username);
   };
 
   render() {
     const { username, errStatus } = this.state;
-    if (errStatus) return <Error errStatus={errStatus} />;
+    if (errStatus)
+      return (
+        <div className="SignIn">
+          <header className="Sign-in-header" />
+          <h1>Welcome to NC News!</h1>
+          <h4>Please enter your username</h4>
+          <h3>Username doesn't exist. Please try again!</h3>
+          <p>Page will refresh in just a moment</p>
+          <script type="text/javascript">
+            {setTimeout(function() {
+              window.location.reload();
+            }, 3000)}
+          </script>
+        </div>
+      );
     return (
       <Fragment>
         <SignIn path="/" handleSignIn={this.handleSignIn} username={username}>
@@ -52,7 +64,7 @@ class App extends Component {
             <Users path="/users" />
             <SingleArt path="/articles/:article_id" username={username} />
             <SingleUser path="/user/:user" />
-            <PostArticle path="/postarticle" />
+            <PostArticle path="/postarticle" username={username} />
             <Error default />
           </Router>{" "}
         </SignIn>

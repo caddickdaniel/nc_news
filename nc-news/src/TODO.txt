@@ -1,6 +1,8 @@
 1. Optimistically render the posting of a comment and topic
+Rather than having a 'PostComment' or 'PostTopic' component shall I just render then in 'Comments' and 'Topics'
+That way I don't need to create a function and pass it down into the component and instead I can Optimistically
+render in the component itself?
 2. Needs styling done and a media query for mobile users
 3. Disable the next page button when there are no articles to render
-4. Add a loading bar rather than plain text
-5. Put some details into single user page (only getting a name on my 'user' obj in SingleUser)
-6. Need to move handlers to the handlers folder, only leaving the componentDidMount and componentDidUpdate in my components
+4. Put some details into single user page (only getting a name on my 'user' obj in SingleUser)
+5. Need to move handlers to the handlers folder, only leaving the componentDidMount and componentDidUpdate in my components

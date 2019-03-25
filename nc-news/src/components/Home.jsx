@@ -92,10 +92,16 @@ class Home extends Component {
     const { articles, p, isLoading, errStatus } = this.state;
     const { topic, username } = this.props;
 
-    const postStyle = { float: "right" };
+    const postStyle = {
+      float: "right",
+      fontSize: "90%",
+      position: "relative",
+      right: "150px",
+      top: "30px"
+    };
     if (isLoading)
       return (
-        <div class="lds-ring">
+        <div className="lds-ring">
           <div />
           <div />
           <div />
@@ -111,19 +117,22 @@ class Home extends Component {
         <header className="Home-header">
           <h1 className="Home-title">NC News</h1>
           <h2 className="Welcome">Welcome to NC News {username}</h2>
-          <hr />
-          <hr />
         </header>
         <NavButtons />
-        <hr />
-        <Link to="/postarticle">
-          <button style={postStyle}>Post Article</button>
-        </Link>
+
         <QuerySelector
           handleChange={this.handleChange}
           handleQuerySubmit={this.handleQuerySubmit}
         />
-        <Articles articles={articles} topic={topic} errStatus={errStatus} />
+        <Link to="/postarticle">
+          <button style={postStyle}>Post Article</button>
+        </Link>
+        <Articles
+          articles={articles}
+          topic={topic}
+          errStatus={errStatus}
+          isLoading={isLoading}
+        />
         <div className="Page-button">
           <button
             onClick={() => this.handlePageSubmit(-1)}

@@ -24,7 +24,8 @@ class PostArticle extends Component {
       title: this.state.title,
       topic: this.state.topic,
       body: this.state.body,
-      author: "grumpy19"
+      author: this.props.username
+      //need to find a way of accessing author, can I access window.localstorage for this value?
     };
 
     axios.post(`${url}articles`, { ...post }).then(({ data }) => {
@@ -40,8 +41,6 @@ class PostArticle extends Component {
       <div>
         <header className="Home-header">
           <h1 className="Home-title">NC News</h1>
-          <hr />
-          <hr />
         </header>
         <NavButtons />
         <div style={postStyle}>
@@ -49,7 +48,6 @@ class PostArticle extends Component {
           <form onSubmit={this.handlePostSubmit}>
             <div>
               <label>Title: </label>
-              <br />
               <input
                 type="text"
                 name="title"
@@ -57,10 +55,8 @@ class PostArticle extends Component {
                 value={this.state.title}
               />
             </div>
-            <br />
             <div>
               <label>Topic: </label>
-              <br />
               <input
                 type="text"
                 name="topic"
@@ -68,17 +64,14 @@ class PostArticle extends Component {
                 value={this.state.topic}
               />
             </div>
-            <br />
             <div>
               <label>Body: </label>
-              <br />
               <textarea
                 name="body"
                 onChange={this.handleChange}
                 value={this.state.body}
               />
             </div>
-            <br />
             <button type="submit">Submit</button>
           </form>
         </div>

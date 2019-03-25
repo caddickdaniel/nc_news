@@ -1,28 +1,60 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.a {
+  color: black;
+  text-decoration: none;
+}
+
+.SignIn {
+  text-align: center;
+}
+
 .Articles {
   text-align: center;
   text-overflow: ellipsis;
+  margin-bottom: 1px;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #b6b6b6;
 }
 
 .Welcome {
   padding-left: 30px;
+  text-decoration: orange;
+  text-decoration-line: underline;
+  text-shadow: 1px 1px rgb(129, 129, 129);
 }
 
 .Home-title {
   padding-left: 30px;
+  text-decoration: orange;
+  text-decoration-line: underline;
+  text-shadow: 1px 1px rgb(129, 129, 129);
 }
 
-/* .Home-header {
-  position: fixed;
-} */
+.Home-header {
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #b6b6b6;
+  box-shadow: 2px 2px #929292;
+}
 
 .ArtText {
+  color: black;
   text-align: center;
   text-decoration: orange;
   text-decoration-line: underline;
-  text-shadow: 2px 2px rgb(129, 129, 129);
+  text-shadow: 1px 1px rgb(129, 129, 129);
 }
 
 .Article-title {
+  color: black;
   text-decoration: orange;
   text-decoration-line: underline;
   text-shadow: 1px 1px rgb(129, 129, 129);
@@ -41,6 +73,26 @@
 
 .Topic-slug {
   text-transform: capitalize;
+  position: relative;
+  margin-left: 6%;
+  color: black;
+  text-decoration: orange;
+  text-decoration-line: underline;
+}
+
+.Topic-description {
+  position: relative;
+  margin-left: 6%;
+}
+
+.Topics {
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #b6b6b6;
+  margin-bottom: 2px;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .i {
@@ -60,6 +112,15 @@
   font-size: 100%;
   line-height: 0.3;
   text-transform: capitalize;
+  text-decoration: orange;
+  text-decoration-line: underline;
+}
+
+.Comments {
+  text-transform: capitalize;
+  text-decoration: orange;
+  text-decoration-line: underline;
+  color: grey;
 }
 
 .Post-article {
@@ -69,57 +130,7 @@
   margin-left: 50px;
   border: none;
   padding-left: 50px;
-}
-
-/* Style The Dropdown Button */
-.dropbtn {
-  background-color: orange;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  margin-left: 20px;
-  margin-top: -20px;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #f1f1f1;
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
-  background-color: #3e8e41;
+  font-size: 150%;
 }
 
 .lds-ring {
@@ -161,4 +172,114 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.Sort-DropText {
+  position: relative;
+  left: 140px;
+  top: 70px;
+}
+
+.Sort-DropDown {
+  position: relative;
+  left: 180px;
+  top: 35px;
+}
+
+.Order-DropDown {
+  position: relative;
+  left: 305px;
+  bottom: 35px;
+}
+
+.Order-DropText {
+  position: relative;
+  left: 255px;
+  top: 1px;
+}
+
+.DropSubmit {
+  position: relative;
+  left: 320px;
+  bottom: 35px;
+}
+
+.QueryForm {
+  margin-bottom: -7%;
+}
+
+.Nav-Button1 {
+  font-size: 90%;
+  position: relative;
+  left: 40px;
+}
+
+.Nav-Button2 {
+  font-size: 90%;
+  position: relative;
+  left: 50px;
+}
+.Nav-Button3 {
+  font-size: 90%;
+  position: relative;
+  left: 60px;
+}
+
+.Nav-Alignment {
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.Slug-label {
+  position: relative;
+  left: 85vh;
+  margin-bottom: 1%;
+}
+
+.Slug-input {
+  position: relative;
+  left: 85vh;
+  margin-bottom: 1%;
+}
+
+.Desc-label {
+  position: relative;
+  left: 77vh;
+  bottom: 1.75vw;
+}
+
+.Desc-input {
+  position: relative;
+  left: 77vh;
+  margin-bottom: 1%;
+}
+
+.Topic-submit {
+  position: relative;
+  left: 94vh;
+}
+
+.Post-Topic-Title {
+  text-align: center;
+  position: relative;
+}
+
+.Users {
+  position: relative;
+  left: 10vh;
+}
+
+.User-name {
+}
+
+.User-username {
+  text-transform: capitalize;
+  text-decoration: orange;
+  text-decoration-line: underline;
+  color: black;
+}
+
+.Avatar-img {
+  position: relative;
+  left: 10vh;
 }

@@ -58,7 +58,6 @@ class PostUser extends Component {
         <form onSubmit={this.handleUserSubmit}>
           <div>
             <label>Username: </label>
-            <br />
             <input
               name="username"
               onChange={this.handleChange}
@@ -67,7 +66,6 @@ class PostUser extends Component {
           </div>
           <div>
             <label>Avatar URL: </label>
-            <br />
             <input
               name="avatar_url"
               onChange={this.handleChange}
@@ -76,14 +74,12 @@ class PostUser extends Component {
           </div>
           <div>
             <label>Name: </label>
-            <br />
             <input
               name="name"
               onChange={this.handleChange}
               value={this.state.name}
             />
           </div>
-          <br />
           <button type="submit">Submit</button>
         </form>
       </div>

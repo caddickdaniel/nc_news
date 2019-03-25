@@ -4,6 +4,7 @@ import { Link } from "@reach/router";
 import PostTopic from "./PostTopic";
 import NavButtons from "./NavButtons";
 import Error from "./Error";
+import "../styling/App.css";
 
 export class Topics extends Component {
   state = {
@@ -36,9 +37,10 @@ export class Topics extends Component {
             <h2 className="Topic-slug">{topic.slug}</h2>
           </Link>
           <div>
-            <p>Description: {topic.description}</p>
+            <p className="Topic-description">
+              Description: {topic.description}
+            </p>
           </div>
-          <hr />
         </div>
       );
     });
@@ -57,11 +59,8 @@ export class Topics extends Component {
         <header className="Home-header">
           <h1 className="Home-title">NC News</h1>
           <h2 className="Home-title">Search Topics</h2>
-          <hr />
-          <hr />
         </header>
         <NavButtons />
-        <hr />
         <h1 className="ArtText">Topics</h1>
         {topicItems}
         <div>

@@ -51,36 +51,34 @@ class PostTopic extends Component {
   }
 
   render() {
-    const topicStyle = {
-      textAlign: "center"
-    };
     const { errStatus } = this.state;
 
     if (errStatus) return <Error errStatus={errStatus} />;
     return (
-      <div style={topicStyle}>
-        <h2>Add Topic</h2>
+      <div>
+        <h2 className="Post-Topic-Title">Add Topic</h2>
         <form onSubmit={this.handleTopicSubmit}>
           <div>
-            <label>Slug: </label>
-            <br />
+            <label className="Slug-label">Slug: </label>
             <input
+              className="Slug-input"
               name="slug"
               onChange={this.handleChange}
               value={this.state.slug}
             />
           </div>
           <div>
-            <label>Description: </label>
-            <br />
+            <label className="Desc-label">Description: </label>
             <textarea
+              className="Desc-input"
               name="description"
               onChange={this.handleChange}
               value={this.state.description}
             />
           </div>
-          <br />
-          <button type="submit">Submit</button>
+          <button type="submit" className="Topic-submit">
+            Submit
+          </button>
         </form>
       </div>
     );
