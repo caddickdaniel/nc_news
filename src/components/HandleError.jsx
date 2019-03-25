@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class Error extends Component {
+class HandleError extends Component {
   render() {
     const { errStatus } = this.props;
 
@@ -14,4 +14,4 @@ class Error extends Component {
   }
 }
 
-export default Error;
+export default HandleError;

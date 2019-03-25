@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { getUsers } from "../Api";
 import PostUser from "./PostUser";
 import NavButtons from "./NavButtons";
-import Error from "./Error";
+import HandleError from "./HandleError";
 import { Link } from "@reach/router";
 import "../styling/App.css";
 
@@ -51,7 +51,7 @@ export class Users extends Component {
             <div />
           </div>
         );
-      else if (errStatus) return <Error errStatus={errStatus} />;
+      else if (errStatus) return <HandleError errStatus={errStatus} />;
       return (
         <div className="Users">
           <div style={userStyle}>

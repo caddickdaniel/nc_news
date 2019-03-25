@@ -8,7 +8,7 @@ import SignIn from "./components/SignIn";
 import SingleArt from "./components/SingleArt";
 import PostArticle from "./components/PostArticle";
 import SingleUser from "./components/SingleUser";
-import Error from "./components/Error";
+import HandleError from "./components/HandleError";
 import { getUsers } from "./Api";
 
 class App extends Component {
@@ -65,7 +65,7 @@ class App extends Component {
             <SingleArt path="/articles/:article_id" username={username} />
             <SingleUser path="/user/:user" />
             <PostArticle path="/postarticle" username={username} />
-            <Error default />
+            <HandleError default />
           </Router>{" "}
         </SignIn>
       </Fragment>

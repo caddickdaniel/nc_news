@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { getUsers, getArticles } from "../Api";
 import NavButtons from "./NavButtons";
-import Error from "./Error";
+import HandleError from "./HandleError";
 
 class SingleUser extends Component {
   state = {
@@ -34,7 +34,7 @@ class SingleUser extends Component {
     };
     const { errStatus } = this.state;
 
-    if (errStatus) return <Error errStatus={errStatus} />;
+    if (errStatus) return <HandleError errStatus={errStatus} />;
 
     return (
       <div>

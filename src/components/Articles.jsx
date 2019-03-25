@@ -18,7 +18,7 @@ export class Articles extends Component {
             <Link to={`/user/${article.author}`}>
               <p className="Author">Author: {article.author}</p>
             </Link>
-            <p className="Author">
+            <p className="Created-text">
               Created:{" "}
               {article.created_at.slice(0, 19).replace(/[a-zA-Z]/, " At: ")}
             </p>

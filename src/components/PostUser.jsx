@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import axios from "axios";
-import { navigate } from "@reach/router";
-import { url } from "../Api";
-import Error from "./Error";
+import { postUser } from "../Api";
+import HandleError from "./HandleError";
 
 class PostUser extends Component {
   state = {
@@ -27,22 +25,16 @@ class PostUser extends Component {
       name: this.state.name
     };
 
-    axios
-      .post(`${url}users`, { ...post })
-      .then(({ data }) => {
-        navigate(`/users`);
-      })
-      .catch(err => {
-        this.setState({
-          errStatus: {
-            message:
-              err.response.data.message ||
-              "Sorry this task cannot be completed",
-            status: err.response.request.status || 400
-          },
-          replace: true
-        });
+    postUser(post).catch(err => {
+      this.setState({
+        errStatus: {
+          message:
+            err.response.data.message || "Sorry this task cannot be completed",
+          status: err.response.request.status || 400
+        },
+        replace: true
       });
+    });
   };
 
   render() {
@@ -51,7 +43,7 @@ class PostUser extends Component {
     };
     const { errStatus } = this.state;
 
-    if (errStatus) return <Error errStatus={errStatus} />;
+    if (errStatus) return <HandleError errStatus={errStatus} />;
     return (
       <div style={userStyle}>
         <h2>Add User</h2>

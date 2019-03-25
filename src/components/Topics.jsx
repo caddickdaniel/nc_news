@@ -3,7 +3,7 @@ import { getTopics } from "../Api";
 import { Link } from "@reach/router";
 import PostTopic from "./PostTopic";
 import NavButtons from "./NavButtons";
-import Error from "./Error";
+import HandleError from "./HandleError";
 import "../styling/App.css";
 
 export class Topics extends Component {
@@ -53,7 +53,7 @@ export class Topics extends Component {
           <div />
         </div>
       );
-    else if (errStatus) return <Error errStatus={errStatus} />;
+    else if (errStatus) return <HandleError errStatus={errStatus} />;
     return (
       <div>
         <header className="Home-header">

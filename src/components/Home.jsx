@@ -5,7 +5,8 @@ import NavButtons from "./NavButtons";
 import QuerySelector from "./QuerySelector";
 import Articles from "./Articles";
 import { Link } from "@reach/router";
-import Error from "./Error";
+import HandleError from "./HandleError";
+import { navigate } from "@reach/router/lib/history";
 
 class Home extends Component {
   state = {
@@ -16,7 +17,8 @@ class Home extends Component {
     errStatus: false,
     isLoading: true,
     articles: [],
-    loggedIn: this.props
+    loggedIn: this.props,
+    username: this.props
   };
 
   componentDidMount() {
@@ -68,6 +70,12 @@ class Home extends Component {
       });
   };
 
+  handleLogout = username => {
+    this.setState({ username: null });
+    window.localStorage.setItem("username", username);
+    navigate("/");
+  };
+
   componentDidUpdate(prevProps, prevState) {
     const { p, sort_by, order } = this.state;
     const { topic } = this.props;
@@ -108,7 +116,7 @@ class Home extends Component {
           <div />
         </div>
       );
-    else if (errStatus) return <Error errStatus={errStatus} />;
+    else if (errStatus) return <HandleError errStatus={errStatus} />;
     else if (!articles) {
       return <p>Sorry, there aren't any articles on this topic</p>;
     }
@@ -117,6 +125,10 @@ class Home extends Component {
         <header className="Home-header">
           <h1 className="Home-title">NC News</h1>
           <h2 className="Welcome">Welcome to NC News {username}</h2>
+          <p>Logged in as: {username}</p>
+          <button type="submit" onClick={() => this.handleLogout(username)}>
+            Logout
+          </button>
         </header>
         <NavButtons />
 

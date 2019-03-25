@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import axios from "axios";
 import { navigate } from "@reach/router";
-import { url } from "../Api";
+import { url, postArticle } from "../Api";
 import NavButtons from "./NavButtons";
 
 class PostArticle extends Component {
@@ -27,10 +26,7 @@ class PostArticle extends Component {
       author: this.props.username
       //need to find a way of accessing author, can I access window.localstorage for this value?
     };
-
-    axios.post(`${url}articles`, { ...post }).then(({ data }) => {
-      navigate(`/articles/${data.article.article_id}`);
-    });
+    postArticle(post);
   };
 
   render() {
@@ -41,6 +37,7 @@ class PostArticle extends Component {
       <div>
         <header className="Home-header">
           <h1 className="Home-title">NC News</h1>
+          <h2 className="Welcome">Post an article</h2>
         </header>
         <NavButtons />
         <div style={postStyle}>

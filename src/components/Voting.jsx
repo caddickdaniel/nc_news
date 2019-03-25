@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { url } from "../Api";
-import Error from "./Error";
+import HandleError from "./HandleError";
 
 class Voting extends Component {
   state = {
@@ -17,7 +17,7 @@ class Voting extends Component {
         ? `${url}comments/${comment_id}`
         : `${url}articles/${article_id}`;
 
-      const { data } = axios.patch(voteUrl, {
+      axios.patch(voteUrl, {
         inc_votes: inc
       });
     };
@@ -27,16 +27,7 @@ class Voting extends Component {
     } else voteInc(article_id, comment_id, inc);
     this.setState(state => ({
       voteChange: state.voteChange + inc
-    })).catch(err => {
-      this.setState({
-        errStatus: {
-          message:
-            err.response.data.message || "Sorry this task cannot be completed",
-          status: err.response.request.status || 400
-        },
-        replace: true
-      });
-    });
+    }));
   };
 
   render() {
@@ -47,7 +38,7 @@ class Voting extends Component {
       textAlign: "center"
     };
 
-    if (errStatus) return <Error errStatus={errStatus} />;
+    if (errStatus) return <HandleError errStatus={errStatus} />;
 
     return (
       <div style={voteButton}>

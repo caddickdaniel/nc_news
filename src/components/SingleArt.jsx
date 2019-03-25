@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import { getSingleArticle } from "../Api";
 import Comments from "./Comments";
 import { Link } from "@reach/router";
-import axios from "axios";
-import { navigate } from "@reach/router";
-import Error from "./Error";
-import { url } from "../Api";
+import HandleError from "./HandleError";
+import { deleteArticle } from "../Api";
 import NavButtons from "./NavButtons";
 import Voting from "./Voting";
+import "../styling/App.css";
 
 class SingleArt extends Component {
   state = {
@@ -35,12 +34,7 @@ class SingleArt extends Component {
   handleDelete = event => {
     const { article_id } = this.state.article;
     event.preventDefault();
-    axios
-      .delete(`${url}articles/${article_id}`)
-      .then(({ data }) => {
-        navigate("/home");
-      })
-      .catch(err => console.log(err));
+    deleteArticle(article_id).catch(err => console.log(err));
   };
 
   render() {
@@ -76,7 +70,7 @@ class SingleArt extends Component {
     const { username } = this.props;
     const { errStatus } = this.state;
 
-    if (errStatus) return <Error errStatus={errStatus} />;
+    if (errStatus) return <HandleError errStatus={errStatus} />;
     return (
       <div>
         <header className="Home-header">
@@ -85,10 +79,15 @@ class SingleArt extends Component {
         <NavButtons />
 
         <Link to={`/articles/topic/${article.topic}`}>
-          <h2 style={topicStyling}>{article.topic}</h2>
+          <h2 className="Topic-title">{article.topic}</h2>
         </Link>
         <h3 style={topicStyling}>{article.title}</h3>
-        <small style={authStyle}> Author: {article.author}</small>
+        <Link to={`/user/${article.author}`}>
+          <small style={authStyle} className="Single-user">
+            {" "}
+            Author: {article.author}
+          </small>
+        </Link>
         <div style={deleteButton}>
           {username === article.author && (
             <form onSubmit={this.handleDelete}>

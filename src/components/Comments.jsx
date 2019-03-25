@@ -3,6 +3,7 @@ import { getComments } from "../Api";
 import Voting from "./Voting";
 import { deleteItem } from "../Api";
 import PostComment from "./PostComment";
+import "../styling/App.css";
 
 class Comments extends Component {
   state = {
@@ -45,7 +46,10 @@ class Comments extends Component {
     };
 
     const bodyStyle = {
-      margin: "60px",
+      marginLeft: "150px",
+      marginRight: "150px",
+      marginBottom: "20px",
+      marginTop: "20px",
       textAlign: "center"
     };
 

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Error from "./Error";
+import HandleError from "./HandleError";
 
 class SignIn extends Component {
   state = {
@@ -20,7 +20,7 @@ class SignIn extends Component {
     const { username } = this.props;
 
     if (username) return this.props.children;
-    if (errStatus) return <Error errStatus={errStatus} />;
+    if (errStatus) return <HandleError errStatus={errStatus} />;
     return (
       <div className="SignIn">
         <header className="Sign-in-header" />

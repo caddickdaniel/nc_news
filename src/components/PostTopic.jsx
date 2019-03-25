@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import axios from "axios";
-import { navigate } from "@reach/router";
-import { url } from "../Api";
-import Error from "./Error";
+import { postTopic } from "../Api";
+import HandleError from "./HandleError";
 
 class PostTopic extends Component {
   state = {
@@ -25,22 +23,17 @@ class PostTopic extends Component {
       description: this.state.description
     };
 
-    axios
-      .post(`${url}topics`, { ...post })
-      .then(({ data }) => {
-        navigate("/topics");
-      })
-      .catch(err => {
-        this.setState({
-          errStatus: {
-            message:
-              err.response.data.message ||
-              "Sorry you entered an incorrect format",
-            status: err.response.request.status || 400
-          },
-          replace: true
-        });
+    postTopic(post).catch(err => {
+      this.setState({
+        errStatus: {
+          message:
+            err.response.data.message ||
+            "Sorry you entered an incorrect format",
+          status: err.response.request.status || 400
+        },
+        replace: true
       });
+    });
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -53,7 +46,7 @@ class PostTopic extends Component {
   render() {
     const { errStatus } = this.state;
 
-    if (errStatus) return <Error errStatus={errStatus} />;
+    if (errStatus) return <HandleError errStatus={errStatus} />;
     return (
       <div>
         <h2 className="Post-Topic-Title">Add Topic</h2>

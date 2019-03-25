@@ -57,6 +57,7 @@
   color: black;
   text-decoration: orange;
   text-decoration-line: underline;
+  text-transform: capitalize;
   text-shadow: 1px 1px rgb(129, 129, 129);
 }
 
@@ -90,9 +91,19 @@
   border-style: solid;
   border-width: 1px;
   border-color: #b6b6b6;
-  margin-bottom: 2px;
+  margin-bottom: 1px;
   margin-left: 5%;
   margin-right: 5%;
+}
+
+.Topic-title {
+  color: black;
+  text-decoration: orange;
+  text-decoration-line: underline;
+  text-transform: capitalize;
+  text-shadow: 1px 1px rgb(129, 129, 129);
+  margin-left: 40px;
+  font-size: 175%;
 }
 
 .i {
@@ -108,12 +119,20 @@
 }
 
 .Author {
-  color: grey;
+  color: rgb(100, 100, 100);
   font-size: 100%;
   line-height: 0.3;
   text-transform: capitalize;
   text-decoration: orange;
   text-decoration-line: underline;
+}
+
+.Created-text {
+  color: rgb(151, 151, 151);
+  font-size: 100%;
+  line-height: 0.3;
+  text-transform: capitalize;
+  text-decoration: orange;
 }
 
 .Comments {
@@ -282,4 +301,24 @@
 .Avatar-img {
   position: relative;
   left: 10vh;
+}
+
+.Add-comment {
+  margin-top: 5%;
+}
+
+.Single-user {
+  margin: "50px";
+  margin-bottom: "20px";
+  text-indent: "2em";
+  margin-top: "10px";
+  text-transform: capitalize;
+  text-decoration: orange;
+  text-decoration-line: underline;
+  color: black;
+}
+
+.Add-comment-text {
+  position: relative;
+  bottom: 10px;
 }
