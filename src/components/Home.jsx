@@ -4,9 +4,8 @@ import "../styling/App.css";
 import NavButtons from "./NavButtons";
 import QuerySelector from "./QuerySelector";
 import Articles from "./Articles";
-import { Link } from "@reach/router";
+import { Link, navigate } from "@reach/router";
 import HandleError from "./HandleError";
-import { navigate } from "@reach/router/lib/history";
 
 class Home extends Component {
   state = {

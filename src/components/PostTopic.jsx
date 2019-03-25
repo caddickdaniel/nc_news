@@ -36,13 +36,6 @@ class PostTopic extends Component {
     });
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    const { description, slug } = this.state;
-
-    if (prevState.slug !== slug || prevState.description !== description) {
-    }
-  }
-
   render() {
     const { errStatus } = this.state;
 

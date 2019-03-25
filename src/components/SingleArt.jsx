@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { getSingleArticle } from "../Api";
+import { getSingleArticle, deleteArticle } from "../Api";
 import Comments from "./Comments";
 import { Link } from "@reach/router";
 import HandleError from "./HandleError";
-import { deleteArticle } from "../Api";
 import NavButtons from "./NavButtons";
 import Voting from "./Voting";
 import "../styling/App.css";

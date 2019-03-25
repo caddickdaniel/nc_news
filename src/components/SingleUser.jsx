@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getUsers, getArticles } from "../Api";
+import { getUsers } from "../Api";
 import NavButtons from "./NavButtons";
 import HandleError from "./HandleError";
 

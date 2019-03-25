@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { getComments } from "../Api";
+import { getComments, deleteItem } from "../Api";
 import Voting from "./Voting";
-import { deleteItem } from "../Api";
 import PostComment from "./PostComment";
 import "../styling/App.css";
 

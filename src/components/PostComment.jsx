@@ -19,7 +19,6 @@ class PostComment extends Component {
     const post = {
       body: this.state.body,
       author: this.props.username
-      //can I access window.localstorage for this value?
     };
     postComment(article_id, post);
     optimisticPostRender(post);

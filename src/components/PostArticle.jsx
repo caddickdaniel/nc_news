@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { navigate } from "@reach/router";
-import { url, postArticle } from "../Api";
+import { postArticle } from "../Api";
 import NavButtons from "./NavButtons";
 
 class PostArticle extends Component {
@@ -24,7 +23,6 @@ class PostArticle extends Component {
       topic: this.state.topic,
       body: this.state.body,
       author: this.props.username
-      //need to find a way of accessing author, can I access window.localstorage for this value?
     };
     postArticle(post);
   };
