@@ -30,22 +30,28 @@ class SingleUser extends Component {
   render() {
     const capitalise = {
       textTransform: "capitalize",
-      marginLeft: "1em"
+      marginLeft: "1.5em"
     };
     const { errStatus } = this.state;
 
     if (errStatus) return <HandleError errStatus={errStatus} />;
 
     return (
-      <div>
+      <div className="paper">
         <header className="Home-header">
           <h1 className="Home-title">NC News</h1>
           <h2 style={capitalise}>{this.state.user.username}</h2>
         </header>
         <NavButtons />
         <h1 className="ArtText">{this.state.user.username}</h1>
-        <h2>{this.state.user.name}</h2>
-        <img src={this.state.user.avatar_url} alt="avatar" />
+        <h2 className="Single-username">{this.state.user.name}</h2>
+        <div className="Single-div">
+          <img
+            className="Single-avatar"
+            src={this.state.user.avatar_url}
+            alt="avatar"
+          />
+        </div>
       </div>
     );
   }

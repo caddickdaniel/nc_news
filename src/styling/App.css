@@ -2,6 +2,20 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+html {
+  width: 1440px;
+}
+
+html:after {
+  /* background-image: url("https://images.pexels.com/photos/158651/news-newsletter-newspaper-information-158651.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: block;
+  opacity: 0.5;
+  content: ""; */
+}
+
 .a {
   color: black;
   text-decoration: none;
@@ -37,6 +51,28 @@
   text-shadow: 1px 1px rgb(129, 129, 129);
 }
 
+/* .Home {
+  width: 100%;
+  height: 150%;
+  margin: 0;
+  padding: 0;
+  background-size: 100%;
+  background-image: url("http://www.distripress.net/wp-content/uploads/2018/03/Featured-Image6-1024x576.jpg");
+} */
+
+/* Diagonal stacked paper effect */
+.paper {
+  background: white;
+  box-shadow:
+    /* The top layer shadow */ 0 1px 1px rgba(0, 0, 0, 0.5),
+    /* The second layer */ 0 10px 0 -5px #eee,
+    /* The second layer shadow */ 0 10px 1px -4px rgba(0, 0, 0, 0.5),
+    /* The third layer */ 0 20px 0 -10px #eee,
+    /* The third layer shadow */ 0 20px 1px -9px rgba(0, 0, 0, 0.5);
+  /* Padding for demo purposes */
+  padding: 30px;
+}
+
 .Home-header {
   border-radius: 5px;
   border-style: solid;
@@ -47,6 +83,7 @@
 
 .ArtText {
   color: black;
+  text-transform: capitalize;
   text-align: center;
   text-decoration: orange;
   text-decoration-line: underline;
@@ -62,10 +99,10 @@
 }
 
 .Article-body {
-  margin-left: 20px;
-  margin-right: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .Page-button {
@@ -208,13 +245,15 @@
 .Order-DropDown {
   position: relative;
   left: 305px;
-  bottom: 35px;
+  bottom: 34px;
 }
 
 .Order-DropText {
   position: relative;
   left: 255px;
   top: 1px;
+  width: 200px;
+  margin-right: 100%;
 }
 
 .DropSubmit {
@@ -251,31 +290,45 @@
 
 .Slug-label {
   position: relative;
-  left: 85vh;
+  left: 80vh;
   margin-bottom: 1%;
 }
 
 .Slug-input {
   position: relative;
-  left: 85vh;
+  left: 80vh;
   margin-bottom: 1%;
 }
 
 .Desc-label {
   position: relative;
-  left: 77vh;
+  left: 73vh;
   bottom: 1.75vw;
 }
 
 .Desc-input {
   position: relative;
-  left: 77vh;
+  left: 73vh;
   margin-bottom: 1%;
 }
 
 .Topic-submit {
   position: relative;
   left: 94vh;
+}
+
+.Topics-container {
+  margin-left: 50px;
+  margin-right: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.User-container {
+  margin-left: 50px;
+  margin-right: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .Post-Topic-Title {
@@ -286,9 +339,15 @@
 .Users {
   position: relative;
   left: 10vh;
+  width: 200px;
+  height: 200px;
+  margin: 0;
 }
 
-.User-name {
+.User-style {
+  text-align: center;
+  margin-left: "10em";
+  margin-right: "40em";
 }
 
 .User-username {
@@ -300,7 +359,6 @@
 
 .Avatar-img {
   position: relative;
-  left: 10vh;
 }
 
 .Add-comment {
@@ -321,4 +379,45 @@
 .Add-comment-text {
   position: relative;
   bottom: 10px;
+}
+
+.Error-handler {
+  text-align: center;
+}
+
+.Logged-div {
+  float: right;
+}
+
+.Logged-status {
+  position: relative;
+  bottom: 40px;
+  padding: 0;
+  width: 200px;
+  margin: 0;
+}
+
+.Logout-button {
+  position: relative;
+  left: 60px;
+  bottom: 30px;
+}
+
+.Single-username {
+  text-transform: capitalize;
+  text-decoration: orange;
+  text-decoration-line: underline;
+  color: black;
+  text-align: center;
+}
+
+.Single-avatar {
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 4px;
+  border-color: orange;
+}
+
+.Single-div {
+  text-align: center;
 }

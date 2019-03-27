@@ -28,18 +28,37 @@ export class Topics extends Component {
       });
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.topics !== this.state.topics) {
+      getTopics()
+        .then(data => this.setState({ topics: data.topics }))
+        .catch(err => {
+          this.setState({
+            errStatus: {
+              message:
+                err.response.data.message || "Sorry this page cannot be found",
+              status: err.response.request.status || 400
+            },
+            replace: true
+          });
+        });
+    }
+  }
+
   render() {
     const { isLoading, errStatus } = this.state;
     const topicItems = this.state.topics.map(topic => {
       return (
-        <div className="Topics">
-          <Link to={`/articles/topic/${topic.slug}`}>
-            <h2 className="Topic-slug">{topic.slug}</h2>
-          </Link>
-          <div>
-            <p className="Topic-description">
-              Description: {topic.description}
-            </p>
+        <div className="Topics-container">
+          <div className="paper">
+            <Link to={`/articles/topic/${topic.slug}`}>
+              <h2 className="Topic-slug">{topic.slug}</h2>
+            </Link>
+            <div>
+              <p className="Topic-description">
+                Description: {topic.description}
+              </p>
+            </div>
           </div>
         </div>
       );
@@ -55,7 +74,7 @@ export class Topics extends Component {
       );
     else if (errStatus) return <HandleError errStatus={errStatus} />;
     return (
-      <div>
+      <div className="paper">
         <header className="Home-header">
           <h1 className="Home-title">NC News</h1>
           <h2 className="Home-title">Search Topics</h2>

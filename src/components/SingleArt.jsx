@@ -71,7 +71,7 @@ class SingleArt extends Component {
 
     if (errStatus) return <HandleError errStatus={errStatus} />;
     return (
-      <div>
+      <div className="paper">
         <header className="Home-header">
           <h1 className="Home-title">NC News</h1>
         </header>

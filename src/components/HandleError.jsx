@@ -5,7 +5,7 @@ class HandleError extends Component {
     const { errStatus } = this.props;
 
     return (
-      <div>
+      <div className="Error-handler">
         <h1>Error</h1>
         <p>{(errStatus && errStatus.message) || "Page not found"} </p>
         <p>Status:{(errStatus && errStatus.status) || 404}</p>

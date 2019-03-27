@@ -120,17 +120,22 @@ class Home extends Component {
       return <p>Sorry, there aren't any articles on this topic</p>;
     }
     return (
-      <div className="Home">
+      <div className="paper">
         <header className="Home-header">
           <h1 className="Home-title">NC News</h1>
           <h2 className="Welcome">Welcome to NC News {username}</h2>
-          <p>Logged in as: {username}</p>
-          <button type="submit" onClick={() => this.handleLogout(username)}>
-            Logout
-          </button>
         </header>
         <NavButtons />
-
+        <div className="Logged-div">
+          <h4 className="Logged-status">Logged in as: {username}</h4>
+          <button
+            type="submit"
+            onClick={() => this.handleLogout(username)}
+            className="Logout-button"
+          >
+            Logout
+          </button>
+        </div>
         <QuerySelector
           handleChange={this.handleChange}
           handleQuerySubmit={this.handleQuerySubmit}

@@ -28,12 +28,26 @@ export class Users extends Component {
       });
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.users !== this.state.users) {
+      getUsers()
+        .then(data => this.setState({ users: data.users }))
+        .catch(err => {
+          this.setState({
+            errStatus: {
+              message:
+                err.response.data.message || "Sorry this page cannot be found",
+              status: err.response.request.status || 400
+            },
+            replace: true
+          });
+        });
+    }
+  }
+
   render() {
     const { isLoading, errStatus } = this.state;
-    const userStyle = {
-      marginLeft: "10em",
-      marginRight: "40em"
-    };
+
     const imgStyle = {
       borderRadius: "50%",
       height: "10%",
@@ -53,26 +67,23 @@ export class Users extends Component {
         );
       else if (errStatus) return <HandleError errStatus={errStatus} />;
       return (
-        <div className="Users">
-          <div style={userStyle}>
-            <h2 className="User-name">{user.name} </h2>
-            <div>
-              <img
-                className="Avatar-img"
-                style={imgStyle}
-                src="https://cdn-images-1.medium.com/max/1200/1*MccriYX-ciBniUzRKAUsAw.png"
-                alt="Avatar"
-              />
+        <div className="User-container">
+          <div className="paper">
+            <div className="User-style">
+              <h2 className="User-name">{user.name} </h2>
+              <div className="Avatar-img">
+                <img style={imgStyle} src={user.avatar_url} alt="Avatar" />
+              </div>
+              <Link to={`/user/${user.username}`}>
+                <p className="User-username">Username:{user.username}</p>
+              </Link>
             </div>
-            <Link to={`/user/${user.username}`}>
-              <p className="User-username">Username:{user.username}</p>
-            </Link>
           </div>
         </div>
       );
     });
     return (
-      <div>
+      <div className="paper">
         <header className="Home-header">
           <h1 className="Home-title">NC News</h1>
           <h2 className="Home-title">Search Users</h2>

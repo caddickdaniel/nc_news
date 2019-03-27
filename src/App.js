@@ -19,6 +19,7 @@ class App extends Component {
 
   handleSignIn = (event, username) => {
     event.preventDefault();
+    if (window.localStorage.username) this.setState({ username });
     getUsers(username)
       .catch(err => {
         this.setState({
@@ -38,6 +39,7 @@ class App extends Component {
 
   render() {
     const { username, errStatus } = this.state;
+
     if (errStatus)
       return (
         <div className="SignIn">
@@ -46,6 +48,12 @@ class App extends Component {
           <h4>Please enter your username</h4>
           <h3>Username doesn't exist. Please try again!</h3>
           <p>Page will refresh in just a moment</p>
+          <div className="lds-ring">
+            <div />
+            <div />
+            <div />
+            <div />
+          </div>
           <script type="text/javascript">
             {setTimeout(function() {
               window.location.reload();
