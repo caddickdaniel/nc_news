@@ -3,17 +3,13 @@ import { getComments, deleteItem } from "../Api";
 import Voting from "./Voting";
 import PostComment from "./PostComment";
 import "../styling/App.css";
+import { Link } from "@reach/router";
 
 class Comments extends Component {
   state = {
     comments: [],
     didDelete: 0
   };
-
-  optimisticPostRender(post) {
-    const { comments } = this.state;
-    comments.push(post);
-  }
 
   componentDidMount() {
     const { article_id } = this.props;
@@ -34,21 +30,24 @@ class Comments extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { article_id } = this.props;
-    if (prevState.didDelete !== this.state.didDelete) {
-      getComments(article_id);
+    if (prevState.comments !== this.state.comments) {
+      getComments(article_id)
+        .then(data => this.setState({ comments: data.comments }))
+        .catch(err => {
+          this.setState({
+            errStatus: {
+              message:
+                err.response.data.message || "Sorry this page cannot be found",
+              status: err.response.request.status || 400
+            },
+            replace: true
+          });
+        });
     }
   }
 
   render() {
     const authorVoteStyle = {
-      textAlign: "center"
-    };
-
-    const bodyStyle = {
-      marginLeft: "150px",
-      marginRight: "150px",
-      marginBottom: "20px",
-      marginTop: "20px",
       textAlign: "center"
     };
 
@@ -66,7 +65,7 @@ class Comments extends Component {
     const commentItems = this.state.comments.map(comment => {
       return (
         <div>
-          <h3 style={bodyStyle}>{comment.body}</h3>
+          <h4 className="Comment-style">{comment.body}</h4>
           <div style={deleteButton}>
             {username === comment.author && (
               <button
@@ -78,7 +77,11 @@ class Comments extends Component {
               </button>
             )}
           </div>
-          <p style={authorVoteStyle}>User: {comment.author}</p>
+          <Link to={`/user/${comment.author}`}>
+            <p style={authorVoteStyle} className="Single-user">
+              User: {comment.author}
+            </p>
+          </Link>
           <Voting
             votes={comment.votes}
             comment_id={comment.comment_id}

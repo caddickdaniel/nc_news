@@ -2,422 +2,789 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-html {
-  width: 1440px;
-}
-
-html:after {
-  /* background-image: url("https://images.pexels.com/photos/158651/news-newsletter-newspaper-information-158651.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-  height: 100%;
-  width: 100%;
-  position: relative;
-  display: block;
-  opacity: 0.5;
-  content: ""; */
-}
-
-.a {
-  color: black;
-  text-decoration: none;
-}
-
-.SignIn {
-  text-align: center;
-}
-
-.Articles {
-  text-align: center;
-  text-overflow: ellipsis;
-  margin-bottom: 1px;
-  margin-left: 10%;
-  margin-right: 10%;
-  border-radius: 5px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #b6b6b6;
-}
-
-.Welcome {
-  padding-left: 30px;
-  text-decoration: orange;
-  text-decoration-line: underline;
-  text-shadow: 1px 1px rgb(129, 129, 129);
-}
-
-.Home-title {
-  padding-left: 30px;
-  text-decoration: orange;
-  text-decoration-line: underline;
-  text-shadow: 1px 1px rgb(129, 129, 129);
-}
-
-/* .Home {
-  width: 100%;
-  height: 150%;
-  margin: 0;
-  padding: 0;
-  background-size: 100%;
-  background-image: url("http://www.distripress.net/wp-content/uploads/2018/03/Featured-Image6-1024x576.jpg");
-} */
-
-/* Diagonal stacked paper effect */
-.paper {
-  background: white;
-  box-shadow:
-    /* The top layer shadow */ 0 1px 1px rgba(0, 0, 0, 0.5),
-    /* The second layer */ 0 10px 0 -5px #eee,
-    /* The second layer shadow */ 0 10px 1px -4px rgba(0, 0, 0, 0.5),
-    /* The third layer */ 0 20px 0 -10px #eee,
-    /* The third layer shadow */ 0 20px 1px -9px rgba(0, 0, 0, 0.5);
-  /* Padding for demo purposes */
-  padding: 30px;
-}
-
-.Home-header {
-  border-radius: 5px;
-  border-style: solid;
-  border-width: 2px;
-  border-color: #b6b6b6;
-  box-shadow: 2px 2px #929292;
-}
-
-.ArtText {
-  color: black;
-  text-transform: capitalize;
-  text-align: center;
-  text-decoration: orange;
-  text-decoration-line: underline;
-  text-shadow: 1px 1px rgb(129, 129, 129);
-}
-
-.Article-title {
-  color: black;
-  text-decoration: orange;
-  text-decoration-line: underline;
-  text-transform: capitalize;
-  text-shadow: 1px 1px rgb(129, 129, 129);
-}
-
-.Article-body {
-  margin-left: 30px;
-  margin-right: 30px;
-  padding-left: 30px;
-  padding-right: 30px;
-}
-
-.Page-button {
-  text-align: center;
-}
-
-.Topic-slug {
-  text-transform: capitalize;
-  position: relative;
-  margin-left: 6%;
-  color: black;
-  text-decoration: orange;
-  text-decoration-line: underline;
-}
-
-.Topic-description {
-  position: relative;
-  margin-left: 6%;
-}
-
-.Topics {
-  border-radius: 5px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #b6b6b6;
-  margin-bottom: 1px;
-  margin-left: 5%;
-  margin-right: 5%;
-}
-
-.Topic-title {
-  color: black;
-  text-decoration: orange;
-  text-decoration-line: underline;
-  text-transform: capitalize;
-  text-shadow: 1px 1px rgb(129, 129, 129);
-  margin-left: 40px;
-  font-size: 175%;
-}
-
-.i {
-  border: solid black;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
-}
-
-.up {
-  transform: rotate(-135deg);
-  -webkit-transform: rotate(-135deg);
-}
-
-.Author {
-  color: rgb(100, 100, 100);
-  font-size: 100%;
-  line-height: 0.3;
-  text-transform: capitalize;
-  text-decoration: orange;
-  text-decoration-line: underline;
-}
-
-.Created-text {
-  color: rgb(151, 151, 151);
-  font-size: 100%;
-  line-height: 0.3;
-  text-transform: capitalize;
-  text-decoration: orange;
-}
-
-.Comments {
-  text-transform: capitalize;
-  text-decoration: orange;
-  text-decoration-line: underline;
-  color: grey;
-}
-
-.Post-article {
-  text-align: right;
-  padding-right: 20px;
-  padding-top: 10px;
-  margin-left: 50px;
-  border: none;
-  padding-left: 50px;
-  font-size: 150%;
-}
-
-.lds-ring {
-  display: inline-block;
-  position: relative;
-  width: 64px;
-  height: 64px;
-  color: orange;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  transition-duration: 1s;
-}
-.lds-ring div {
-  box-sizing: border-box;
-  display: block;
-  position: absolute;
-  width: 51px;
-  height: 51px;
-  margin: 6px;
-  border: 6px solid #fff;
-  border-radius: 50%;
-  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: orange transparent transparent transparent;
-}
-.lds-ring div:nth-child(1) {
-  animation-delay: -0.45s;
-}
-.lds-ring div:nth-child(2) {
-  animation-delay: -0.3s;
-}
-.lds-ring div:nth-child(3) {
-  animation-delay: -0.15s;
-}
-@keyframes lds-ring {
-  0% {
-    transform: rotate(0deg);
+@media only screen and (max-width: 1440px) {
+  html {
+    max-width: 100%;
+    overflow-x: hidden;
   }
-  100% {
-    transform: rotate(360deg);
+
+  .html-style {
+    background-image: url("./background/black-and-white-data-folded-158651.png");
+    background-size: 100%;
+    background-attachment: fixed;
+  }
+
+  .Body-Styling {
+    margin: 50px;
+    margin-bottom: 20px;
+    text-indent: 2em;
+    margin-top: 10px;
+    font-size: 120%;
+    padding: 20px;
+  }
+
+  .Comment-style {
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 120%;
+  }
+
+  .a {
+    color: black;
+    text-decoration: none;
+  }
+
+  .SignIn {
+    text-align: center;
+  }
+
+  .Articles {
+    text-align: center;
+    text-overflow: ellipsis;
+    margin-bottom: 1px;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #b6b6b6;
+    background-color: rgba(300, 300, 300, 0.5);
+  }
+
+  .Welcome {
+    padding-left: 30px;
+    text-decoration: orange;
+    text-decoration-line: underline;
+    text-shadow: 1px 1px rgb(129, 129, 129);
+  }
+
+  .Home-title {
+    padding-left: 30px;
+    text-decoration: orange;
+    text-decoration-line: underline;
+    text-shadow: 1px 1px rgb(129, 129, 129);
+  }
+
+  .paper {
+    background: white;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5), 0 10px 0 -5px #eee,
+      0 10px 1px -4px rgba(0, 0, 0, 0.5), 0 20px 0 -10px #eee,
+      0 20px 1px -9px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    background-image: url("./background/black-and-white-data-folded-158651.png");
+    background-size: 100%;
+    background-attachment: fixed;
+    position: relative;
+  }
+
+  .Home-header {
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #b6b6b6;
+    box-shadow: 2px 2px #929292;
+    border-color: #b6b6b6;
+    background-color: rgba(300, 300, 300, 0.5);
+  }
+
+  .ArtText {
+    position: relative;
+    color: black;
+    text-transform: capitalize;
+    text-align: center;
+    text-decoration: orange;
+    text-decoration-line: underline;
+    text-shadow: 1px 1px rgb(129, 129, 129);
+  }
+
+  .Home-text {
+    position: relative;
+    left: 1.8em;
+    color: black;
+    text-transform: capitalize;
+    text-align: center;
+    text-decoration: orange;
+    text-decoration-line: underline;
+    text-shadow: 1px 1px rgb(129, 129, 129);
+  }
+
+  .Article-title {
+    color: black;
+    text-decoration: orange;
+    text-decoration-line: underline;
+    text-transform: capitalize;
+    text-shadow: 1px 1px rgb(129, 129, 129);
+  }
+
+  .Article-body {
+    margin-left: 30px;
+    margin-right: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .Page-button {
+    text-align: center;
+  }
+
+  .Topic-slug {
+    text-transform: capitalize;
+    position: relative;
+    margin-left: 6%;
+    color: black;
+    text-decoration: orange;
+    text-decoration-line: underline;
+  }
+
+  .Topic-description {
+    position: relative;
+    margin-left: 6%;
+  }
+
+  .Topics {
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #b6b6b6;
+    margin-bottom: 1px;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .Topic-title {
+    color: black;
+    text-decoration: orange;
+    text-decoration-line: underline;
+    text-transform: capitalize;
+    text-shadow: 1px 1px rgb(129, 129, 129);
+    margin-left: 40px;
+    font-size: 175%;
+  }
+
+  .i {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+  }
+
+  .up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }
+
+  .Author {
+    color: rgb(100, 100, 100);
+    font-size: 100%;
+    line-height: 0.3;
+    text-transform: capitalize;
+    text-decoration: orange;
+    text-decoration-line: underline;
+  }
+
+  .Created-text {
+    color: rgb(151, 151, 151);
+    font-size: 100%;
+    line-height: 0.3;
+    text-transform: capitalize;
+    text-decoration: orange;
+  }
+
+  .Comments {
+    text-transform: capitalize;
+    text-decoration: orange;
+    text-decoration-line: underline;
+    color: grey;
+  }
+
+  .lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 64px;
+    height: 64px;
+    color: orange;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition-duration: 1s;
+  }
+  .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 51px;
+    height: 51px;
+    margin: 6px;
+    border: 6px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: orange transparent transparent transparent;
+  }
+  .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .Post-article {
+    position: relative;
+    left: 1em;
+    bottom: 4em;
+    font-size: 90%;
+  }
+
+  .Sort-DropText {
+    position: relative;
+    left: 1em;
+    overflow-x: hidden;
+  }
+
+  .Sort-DropDown {
+    position: relative;
+    left: 6em;
+    bottom: 3.15em;
+  }
+
+  .Order-DropDown {
+    position: relative;
+    left: 21em;
+    bottom: 9.4em;
+  }
+
+  .Order-DropText {
+    position: relative;
+    left: 10em;
+    bottom: 4.2em;
+    overflow-x: hidden;
+    margin-right: 50%;
+  }
+
+  .Query-Post-Bar {
+    margin-left: 100px;
+    margin-right: 100px;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #b6b6b6;
+    background-color: rgba(300, 300, 300, 0.5);
+  }
+
+  .DropSubmit {
+    position: relative;
+    left: 23em;
+    bottom: 9.4em;
+  }
+
+  .QueryForm {
+    margin-bottom: -10%;
+  }
+
+  .Nav-Button1 {
+    font-size: 90%;
+    position: relative;
+    left: 40px;
+  }
+
+  .Nav-Button2 {
+    font-size: 90%;
+    position: relative;
+    left: 50px;
+  }
+  .Nav-Button3 {
+    font-size: 90%;
+    position: relative;
+    left: 60px;
+  }
+
+  .Nav-Alignment {
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
+
+  .Topics-container {
+    margin-left: 100px;
+    margin-right: 100px;
+    padding-left: 100px;
+    padding-right: 100px;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #b6b6b6;
+    background-color: rgba(300, 300, 300, 0.5);
+  }
+
+  .User-container {
+    margin-left: 100px;
+    margin-right: 100px;
+    padding-left: 100px;
+    padding-right: 100px;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #b6b6b6;
+    background-color: rgba(300, 300, 300, 0.5);
+  }
+
+  .Post-Topic-Title {
+    text-align: center;
+    position: relative;
+  }
+
+  .Users {
+    position: relative;
+    left: 10vh;
+    width: 200px;
+    height: 200px;
+    margin: 0;
+  }
+
+  .User-style {
+    text-align: center;
+    margin-left: "10em";
+    margin-right: "40em";
+  }
+
+  .User-username {
+    text-transform: capitalize;
+    text-decoration: orange;
+    text-decoration-line: underline;
+    color: black;
+  }
+
+  .Avatar-img {
+    position: relative;
+  }
+
+  .Add-comment {
+    margin-top: 5%;
+  }
+
+  .Single-user {
+    margin: "50px";
+    margin-bottom: "20px";
+    text-indent: "2em";
+    margin-top: "10px";
+    text-transform: capitalize;
+    text-decoration: orange;
+    text-decoration-line: underline;
+    color: black;
+  }
+
+  .Add-comment-text {
+    position: relative;
+    bottom: 10px;
+  }
+
+  .Error-handler {
+    text-align: center;
+  }
+
+  .Logged-div {
+    float: right;
+  }
+
+  .Logged-status {
+    position: relative;
+    bottom: 40px;
+    padding: 0;
+    width: 200px;
+    margin: 0;
+  }
+
+  .Logout-button {
+    position: relative;
+    left: 60px;
+    bottom: 39px;
+  }
+
+  .Single-username {
+    text-transform: capitalize;
+    text-decoration: orange;
+    text-decoration-line: underline;
+    color: black;
+    text-align: center;
+  }
+
+  .Single-avatar {
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 4px;
+    border-color: orange;
+  }
+
+  .Single-div {
+    text-align: center;
+  }
+
+  .Single-art-container {
+    background-color: rgba(300, 300, 300, 0.5);
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #b6b6b6;
+    padding-bottom: 10px;
   }
 }
 
-.Sort-DropText {
-  position: relative;
-  left: 140px;
-  top: 70px;
+@media only screen and (max-width: 1024px) {
+  .Post-article {
+    position: relative;
+    left: 1em;
+    bottom: 4em;
+    font-size: 90%;
+  }
+
+  .Sort-DropText {
+    position: relative;
+    left: 1em;
+    overflow-x: hidden;
+  }
+
+  .Sort-DropDown {
+    position: relative;
+    left: 6em;
+    bottom: 3.15em;
+  }
+
+  .Order-DropDown {
+    position: relative;
+    left: 21em;
+    bottom: 9.4em;
+  }
+
+  .Order-DropText {
+    position: relative;
+    left: 10em;
+    bottom: 4.2em;
+    overflow-x: hidden;
+  }
+
+  .Query-Post-Bar {
+    margin-left: 50px;
+    margin-right: 50px;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #b6b6b6;
+    background-color: rgba(300, 300, 300, 0.5);
+  }
+
+  .DropSubmit {
+    position: relative;
+    left: 23em;
+    bottom: 9.4em;
+  }
+
+  .QueryForm {
+    margin-bottom: -13%;
+  }
 }
 
-.Sort-DropDown {
-  position: relative;
-  left: 180px;
-  top: 35px;
+@media only screen and (max-width: 768px) {
+  .QueryForm {
+    margin-bottom: -18%;
+  }
 }
 
-.Order-DropDown {
-  position: relative;
-  left: 305px;
-  bottom: 34px;
+@media only screen and (max-width: 425px) {
+  .Post-article {
+    position: relative;
+    left: 0em;
+    bottom: 6em;
+    font-size: 90%;
+  }
+
+  .Sort-DropText {
+    position: relative;
+    left: 1em;
+    overflow-x: hidden;
+  }
+
+  .Sort-DropDown {
+    position: relative;
+    left: 5em;
+    bottom: 3.15em;
+  }
+
+  .Order-DropDown {
+    position: relative;
+    left: 17em;
+    bottom: 9.3em;
+  }
+
+  .Order-DropText {
+    position: relative;
+    left: 8em;
+    bottom: 4.2em;
+    overflow-x: hidden;
+  }
+
+  .Query-Post-Bar {
+    margin-left: 0px;
+    margin-right: 0px;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #b6b6b6;
+    background-color: rgba(300, 300, 300, 0.5);
+  }
+
+  .DropSubmit {
+    position: relative;
+    left: 21em;
+    bottom: 9.3em;
+  }
+
+  .QueryForm {
+    margin-bottom: -30%;
+  }
+
+  .Articles {
+    text-align: center;
+    margin-bottom: 1px;
+    margin: 0px;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #b6b6b6;
+    background-color: rgba(300, 300, 300, 0.5);
+  }
+
+  .Article-body {
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .Home-text {
+    position: relative;
+    left: 1.5em;
+    color: black;
+    text-transform: capitalize;
+    text-decoration: orange;
+    text-decoration-line: underline;
+    text-shadow: 1px 1px rgb(129, 129, 129);
+    overflow-x: hidden;
+  }
+
+  .html-style {
+    background-image: url("./background/black-and-white-data-folded-158651.png");
+    background-size: 100%;
+    background-attachment: fixed;
+    overflow-x: hidden;
+  }
+
+  .Nav-Button1 {
+    font-size: 90%;
+    position: relative;
+    left: 0px;
+  }
+
+  .Nav-Button2 {
+    font-size: 90%;
+    position: relative;
+    left: 0px;
+  }
+  .Nav-Button3 {
+    font-size: 90%;
+    position: relative;
+    left: 0px;
+  }
+
+  .Nav-Alignment {
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
+
+  .Logged-status {
+    position: relative;
+    text-align: center;
+    bottom: 40px;
+    padding: 0;
+    width: 100px;
+    margin: 0;
+    right: 10px;
+    font-size: 75%;
+  }
+
+  .Logout-button {
+    position: relative;
+    left: 15px;
+    bottom: 45px;
+  }
+
+  .Topics-container {
+    margin: 0px;
+  }
+
+  .User-container {
+    margin: 0px;
+  }
+
+  .Single-avatar {
+    width: 60%;
+  }
+
+  .p {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .Body-Styling {
+    margin: 0px;
+  }
+
+  .Comment-style {
+    margin: 0px;
+    text-align: center;
+  }
 }
 
-.Order-DropText {
-  position: relative;
-  left: 255px;
-  top: 1px;
-  width: 200px;
-  margin-right: 100%;
+@media only screen and (max-width: 375px) {
+  .Post-article {
+    position: relative;
+    left: 0em;
+    bottom: 4em;
+    font-size: 90%;
+  }
+
+  .Sort-DropText {
+    position: relative;
+    left: 1em;
+    overflow-x: hidden;
+  }
+
+  .Sort-DropDown {
+    position: relative;
+    left: 5em;
+    bottom: 3.15em;
+  }
+
+  .Order-DropDown {
+    position: relative;
+    left: 17em;
+    bottom: 9.3em;
+  }
+
+  .Order-DropText {
+    position: relative;
+    left: 8em;
+    bottom: 4.2em;
+    overflow-x: hidden;
+  }
+
+  .Query-Post-Bar {
+    margin-left: 0px;
+    margin-right: 0px;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #b6b6b6;
+    background-color: rgba(300, 300, 300, 0.5);
+  }
+
+  .DropSubmit {
+    position: relative;
+    left: 18em;
+    bottom: 9.3em;
+  }
+
+  .QueryForm {
+    margin-bottom: -35%;
+  }
+
+  .User-username {
+    right: 10em;
+  }
 }
 
-.DropSubmit {
-  position: relative;
-  left: 320px;
-  bottom: 35px;
-}
+@media only screen and (max-width: 320px) {
+  .Post-article {
+    position: relative;
+    left: 0em;
+    bottom: 4em;
+    font-size: 90%;
+  }
 
-.QueryForm {
-  margin-bottom: -7%;
-}
+  .Sort-DropText {
+    position: relative;
+    left: 10px;
+    overflow-x: hidden;
+  }
 
-.Nav-Button1 {
-  font-size: 90%;
-  position: relative;
-  left: 40px;
-}
+  .Sort-DropDown {
+    position: relative;
+    left: 45px;
+    bottom: 3.15em;
+  }
 
-.Nav-Button2 {
-  font-size: 90%;
-  position: relative;
-  left: 50px;
-}
-.Nav-Button3 {
-  font-size: 90%;
-  position: relative;
-  left: 60px;
-}
+  .Order-DropDown {
+    position: relative;
+    left: 13em;
+    bottom: 9.3em;
+  }
 
-.Nav-Alignment {
-  margin-bottom: 20px;
-  margin-top: 10px;
-}
+  .Order-DropText {
+    position: relative;
+    left: 6em;
+    bottom: 4.2em;
+    overflow-x: hidden;
+  }
 
-.Slug-label {
-  position: relative;
-  left: 80vh;
-  margin-bottom: 1%;
-}
+  .Query-Post-Bar {
+    margin-left: 0px;
+    margin-right: 0px;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #b6b6b6;
+    background-color: rgba(300, 300, 300, 0.5);
+  }
 
-.Slug-input {
-  position: relative;
-  left: 80vh;
-  margin-bottom: 1%;
-}
+  .DropSubmit {
+    position: relative;
+    left: 12em;
+    bottom: 9.3em;
+  }
 
-.Desc-label {
-  position: relative;
-  left: 73vh;
-  bottom: 1.75vw;
-}
+  .QueryForm {
+    margin-bottom: -35%;
+  }
 
-.Desc-input {
-  position: relative;
-  left: 73vh;
-  margin-bottom: 1%;
-}
+  .User-username {
+    right: 10em;
+  }
 
-.Topic-submit {
-  position: relative;
-  left: 94vh;
-}
+  .Logged-status {
+    position: relative;
+    text-align: center;
+    bottom: 40px;
+    padding: 0;
+    width: 100px;
+    margin: 0;
+    left: 30px;
+    font-size: 75%;
+  }
 
-.Topics-container {
-  margin-left: 50px;
-  margin-right: 50px;
-  padding-left: 50px;
-  padding-right: 50px;
-}
-
-.User-container {
-  margin-left: 50px;
-  margin-right: 50px;
-  padding-left: 50px;
-  padding-right: 50px;
-}
-
-.Post-Topic-Title {
-  text-align: center;
-  position: relative;
-}
-
-.Users {
-  position: relative;
-  left: 10vh;
-  width: 200px;
-  height: 200px;
-  margin: 0;
-}
-
-.User-style {
-  text-align: center;
-  margin-left: "10em";
-  margin-right: "40em";
-}
-
-.User-username {
-  text-transform: capitalize;
-  text-decoration: orange;
-  text-decoration-line: underline;
-  color: black;
-}
-
-.Avatar-img {
-  position: relative;
-}
-
-.Add-comment {
-  margin-top: 5%;
-}
-
-.Single-user {
-  margin: "50px";
-  margin-bottom: "20px";
-  text-indent: "2em";
-  margin-top: "10px";
-  text-transform: capitalize;
-  text-decoration: orange;
-  text-decoration-line: underline;
-  color: black;
-}
-
-.Add-comment-text {
-  position: relative;
-  bottom: 10px;
-}
-
-.Error-handler {
-  text-align: center;
-}
-
-.Logged-div {
-  float: right;
-}
-
-.Logged-status {
-  position: relative;
-  bottom: 40px;
-  padding: 0;
-  width: 200px;
-  margin: 0;
-}
-
-.Logout-button {
-  position: relative;
-  left: 60px;
-  bottom: 30px;
-}
-
-.Single-username {
-  text-transform: capitalize;
-  text-decoration: orange;
-  text-decoration-line: underline;
-  color: black;
-  text-align: center;
-}
-
-.Single-avatar {
-  border-radius: 50%;
-  border-style: solid;
-  border-width: 4px;
-  border-color: orange;
-}
-
-.Single-div {
-  text-align: center;
+  .Logout-button {
+    position: relative;
+    left: 50px;
+    bottom: 45px;
+  }
 }

@@ -10,6 +10,7 @@ import PostArticle from "./components/PostArticle";
 import SingleUser from "./components/SingleUser";
 import HandleError from "./components/HandleError";
 import { getUsers } from "./Api";
+import LoadingBar from "./components/LoadingBar";
 
 class App extends Component {
   state = {
@@ -43,17 +44,10 @@ class App extends Component {
     if (errStatus)
       return (
         <div className="SignIn">
-          <header className="Sign-in-header" />
-          <h1>Welcome to NC News!</h1>
-          <h4>Please enter your username</h4>
+          <SignIn />
           <h3>Username doesn't exist. Please try again!</h3>
           <p>Page will refresh in just a moment</p>
-          <div className="lds-ring">
-            <div />
-            <div />
-            <div />
-            <div />
-          </div>
+          <LoadingBar />
           <script type="text/javascript">
             {setTimeout(function() {
               window.location.reload();
@@ -65,7 +59,7 @@ class App extends Component {
       <Fragment>
         <SignIn path="/" handleSignIn={this.handleSignIn} username={username}>
           <Router>
-            <Home path="/home" username={username} />
+            <Home path="/" username={username} />
             <Home path="articles/topic/:topic" username={username} />
             <Home path="articles/topic/:slug" username={username} />
             <Topics path="/topics" />

@@ -5,7 +5,7 @@ import "../styling/App.css";
 export default function NavButtons(article, topic, user) {
   return (
     <div className="Nav-Alignment">
-      <Link to="/home">
+      <Link to="/">
         <button className="Nav-Button1">Home</button>
       </Link>
       <Link to="/topics">

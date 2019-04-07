@@ -4,6 +4,8 @@ import PostUser from "./PostUser";
 import NavButtons from "./NavButtons";
 import HandleError from "./HandleError";
 import { Link } from "@reach/router";
+import LoadingBar from "./LoadingBar";
+import SignIn from "./SignIn";
 import "../styling/App.css";
 
 export class Users extends Component {
@@ -56,32 +58,24 @@ export class Users extends Component {
     };
 
     const userItems = this.state.users.map(user => {
-      if (isLoading)
-        return (
-          <div class="lds-ring">
-            <div />
-            <div />
-            <div />
-            <div />
-          </div>
-        );
+      if (isLoading) return <LoadingBar />;
       else if (errStatus) return <HandleError errStatus={errStatus} />;
       return (
         <div className="User-container">
-          <div className="paper">
-            <div className="User-style">
-              <h2 className="User-name">{user.name} </h2>
-              <div className="Avatar-img">
-                <img style={imgStyle} src={user.avatar_url} alt="Avatar" />
-              </div>
-              <Link to={`/user/${user.username}`}>
-                <p className="User-username">Username:{user.username}</p>
-              </Link>
+          <div className="User-style">
+            <h2 className="User-name">{user.name} </h2>
+            <div className="Avatar-img">
+              <img style={imgStyle} src={user.avatar_url} alt="Avatar" />
             </div>
+            <Link to={`/user/${user.username}`}>
+              <p className="User-username">Username:{user.username}</p>
+            </Link>
           </div>
         </div>
       );
     });
+    if (isLoading) return <LoadingBar />;
+    else if (!window.localStorage.username) return <SignIn />;
     return (
       <div className="paper">
         <header className="Home-header">

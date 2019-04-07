@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link } from "@reach/router";
+
 import "../styling/App.css";
 
 export default class QuerySelector extends Component {
@@ -33,6 +35,9 @@ export default class QuerySelector extends Component {
             Submit
           </button>
         </form>
+        <Link to="/postarticle">
+          <button className="Post-article">Post Article</button>
+        </Link>
       </div>
     );
   }

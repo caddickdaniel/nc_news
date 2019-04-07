@@ -24,7 +24,7 @@ class SignIn extends Component {
     return (
       <div className="SignIn">
         <header className="Sign-in-header" />
-        <h1>Welcome to NC News!</h1>
+        <h1 className="Home-title">Welcome to NC News!</h1>
         <h4>Please enter your username</h4>
         <form onSubmit={this.handleSubmit}>
           <input

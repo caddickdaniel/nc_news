@@ -1,8 +1,35 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
 import "../styling/App.css";
+import LoadingBar from "./LoadingBar";
+import QuerySelector from "./QuerySelector";
+import { getArticles } from "../Api";
 
 export class Articles extends Component {
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState(state => ({ ...state, [name]: value }));
+  };
+
+  handleQuerySubmit = event => {
+    const { p, sort_by, order } = this.state;
+
+    event.preventDefault();
+
+    getArticles(p, sort_by, order)
+      .then(data => this.setState({ articles: data.articles }))
+      .catch(err => {
+        this.setState({
+          errStatus: {
+            message:
+              err.response.data.message || "Sorry this page cannot be found",
+            status: err.response.request.status || 400
+          },
+          replace: true
+        });
+      });
+  };
+
   render() {
     const { articles, topic, isLoading } = this.props;
     const articleItems = articles.map(article => {
@@ -33,22 +60,20 @@ export class Articles extends Component {
         </div>
       );
     });
-    if (isLoading)
-      return (
-        <div class="lds-ring">
-          <div />
-          <div />
-          <div />
-          <div />
-        </div>
-      );
+    if (isLoading) return <LoadingBar />;
     return (
       <div>
-        {topic ? (
-          <h1 className="ArtText">Articles on {topic}</h1>
-        ) : (
-          <h1 className="ArtText">Articles</h1>
-        )}
+        <div className="Query-Post-Bar">
+          {topic ? (
+            <h1 className="Home-text">Articles on {topic}</h1>
+          ) : (
+            <h1 className="Home-text">Articles</h1>
+          )}
+          <QuerySelector
+            handleChange={this.handleChange}
+            handleQuerySubmit={this.handleQuerySubmit}
+          />
+        </div>
         {articleItems}
       </div>
     );

@@ -4,6 +4,8 @@ import { Link } from "@reach/router";
 import PostTopic from "./PostTopic";
 import NavButtons from "./NavButtons";
 import HandleError from "./HandleError";
+import LoadingBar from "./LoadingBar";
+import SignIn from "./SignIn";
 import "../styling/App.css";
 
 export class Topics extends Component {
@@ -50,7 +52,7 @@ export class Topics extends Component {
     const topicItems = this.state.topics.map(topic => {
       return (
         <div className="Topics-container">
-          <div className="paper">
+          <div>
             <Link to={`/articles/topic/${topic.slug}`}>
               <h2 className="Topic-slug">{topic.slug}</h2>
             </Link>
@@ -63,16 +65,9 @@ export class Topics extends Component {
         </div>
       );
     });
-    if (isLoading)
-      return (
-        <div class="lds-ring">
-          <div />
-          <div />
-          <div />
-          <div />
-        </div>
-      );
+    if (isLoading) return <LoadingBar />;
     else if (errStatus) return <HandleError errStatus={errStatus} />;
+    else if (!window.localStorage.username) return <SignIn />;
     return (
       <div className="paper">
         <header className="Home-header">
@@ -82,7 +77,7 @@ export class Topics extends Component {
         <NavButtons />
         <h1 className="ArtText">Topics</h1>
         {topicItems}
-        <div>
+        <div className="SignIn">
           <PostTopic />
         </div>
       </div>

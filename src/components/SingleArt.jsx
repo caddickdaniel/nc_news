@@ -40,14 +40,6 @@ class SingleArt extends Component {
     const { article } = this.state;
     const { article_id, comment_id } = this.props;
 
-    const bodyStyling = {
-      margin: "50px",
-      marginBottom: "20px",
-      textIndent: "2em",
-      marginTop: "10px",
-      fontSize: "120%"
-    };
-
     const topicStyling = {
       textTransform: "capitalize",
       margin: "40px",
@@ -74,29 +66,31 @@ class SingleArt extends Component {
       <div className="paper">
         <header className="Home-header">
           <h1 className="Home-title">NC News</h1>
+          <Link to={`/articles/topic/${article.topic}`}>
+            <h2 className="Topic-title">{article.topic}</h2>
+          </Link>
         </header>
         <NavButtons />
 
-        <Link to={`/articles/topic/${article.topic}`}>
-          <h2 className="Topic-title">{article.topic}</h2>
-        </Link>
-        <h3 style={topicStyling}>{article.title}</h3>
-        <Link to={`/user/${article.author}`}>
-          <small style={authStyle} className="Single-user">
-            {" "}
-            Author: {article.author}
-          </small>
-        </Link>
-        <div style={deleteButton}>
-          {username === article.author && (
-            <form onSubmit={this.handleDelete}>
-              <button type="submit">Delete Post</button>
-            </form>
-          )}
+        <div className="Single-art-container">
+          <h3 style={topicStyling}>{article.title}</h3>
+          <Link to={`/user/${article.author}`}>
+            <small style={authStyle} className="Single-user">
+              {" "}
+              Author: {article.author}
+            </small>
+          </Link>
+          <div style={deleteButton}>
+            {username === article.author && (
+              <form onSubmit={this.handleDelete}>
+                <button type="submit">Delete Post</button>
+              </form>
+            )}
+          </div>
+          <p className="Body-Styling">{article.body}</p>
+          <Voting votes={article.votes} article_id={article_id} />
         </div>
-        <p style={bodyStyling}>{article.body}</p>
 
-        <Voting votes={article.votes} article_id={article_id} />
         <div>
           <Comments
             article_id={article_id}

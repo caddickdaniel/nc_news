@@ -63,6 +63,6 @@ export const postUser = post => {
 
 export const deleteArticle = article_id => {
   return axios.delete(`${url}articles/${article_id}`).then(({ data }) => {
-    navigate("/home");
+    navigate("/");
   });
 };

@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { getArticles } from "../Api";
 import "../styling/App.css";
 import NavButtons from "./NavButtons";
-import QuerySelector from "./QuerySelector";
 import Articles from "./Articles";
-import { Link, navigate } from "@reach/router";
+import LoadingBar from "./LoadingBar";
+import { Link } from "@reach/router";
 import HandleError from "./HandleError";
+import SignIn from "./SignIn";
 
 class Home extends Component {
   state = {
@@ -40,39 +41,12 @@ class Home extends Component {
 
   handlePageSubmit = inc => {
     const { p } = this.state;
-    console.log("page submit init");
     this.setState({ p: p + inc });
   };
 
-  handleChange = event => {
-    const { name, value } = event.target;
-    console.log(name, value);
-    this.setState(state => ({ ...state, [name]: value }));
-  };
-
-  handleQuerySubmit = event => {
-    const { p, sort_by, order } = this.state;
-
-    event.preventDefault();
-
-    getArticles(p, sort_by, order)
-      .then(data => this.setState({ articles: data.articles }))
-      .catch(err => {
-        this.setState({
-          errStatus: {
-            message:
-              err.response.data.message || "Sorry this page cannot be found",
-            status: err.response.request.status || 400
-          },
-          replace: true
-        });
-      });
-  };
-
   handleLogout = username => {
-    this.setState({ username: null });
-    window.localStorage.setItem("username", username);
-    navigate("/");
+    this.setState({ username: username });
+    localStorage.clear();
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -99,26 +73,11 @@ class Home extends Component {
     const { articles, p, isLoading, errStatus } = this.state;
     const { topic, username } = this.props;
 
-    const postStyle = {
-      float: "right",
-      fontSize: "90%",
-      position: "relative",
-      right: "150px",
-      top: "30px"
-    };
-    if (isLoading)
-      return (
-        <div className="lds-ring">
-          <div />
-          <div />
-          <div />
-          <div />
-        </div>
-      );
+    if (isLoading) return <LoadingBar />;
     else if (errStatus) return <HandleError errStatus={errStatus} />;
     else if (!articles) {
       return <p>Sorry, there aren't any articles on this topic</p>;
-    }
+    } else if (!window.localStorage.username) return <SignIn />;
     return (
       <div className="paper">
         <header className="Home-header">
@@ -127,7 +86,12 @@ class Home extends Component {
         </header>
         <NavButtons />
         <div className="Logged-div">
-          <h4 className="Logged-status">Logged in as: {username}</h4>
+          <h4 className="Logged-status">
+            Logged in as:{" "}
+            <Link to={`/user/${username}`} className="Single-user">
+              {username}
+            </Link>
+          </h4>
           <button
             type="submit"
             onClick={() => this.handleLogout(username)}
@@ -136,13 +100,6 @@ class Home extends Component {
             Logout
           </button>
         </div>
-        <QuerySelector
-          handleChange={this.handleChange}
-          handleQuerySubmit={this.handleQuerySubmit}
-        />
-        <Link to="/postarticle">
-          <button style={postStyle}>Post Article</button>
-        </Link>
         <Articles
           articles={articles}
           topic={topic}
@@ -156,7 +113,13 @@ class Home extends Component {
           >
             &#171;
           </button>{" "}
-          {p} <button onClick={() => this.handlePageSubmit(1)}>&#187;</button>
+          {p}{" "}
+          <button
+            onClick={() => this.handlePageSubmit(1)}
+            disabled={this.state.p === 5 ? true : false}
+          >
+            &#187;
+          </button>
         </div>
       </div>
     );

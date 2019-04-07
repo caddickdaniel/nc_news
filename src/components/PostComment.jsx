@@ -15,13 +15,12 @@ class PostComment extends Component {
 
   handleCommentSubmit = event => {
     event.preventDefault();
-    const { article_id, optimisticPostRender } = this.props;
+    const { article_id } = this.props;
     const post = {
       body: this.state.body,
       author: this.props.username
     };
     postComment(article_id, post);
-    optimisticPostRender(post);
   };
 
   render() {

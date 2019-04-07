@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { postArticle } from "../Api";
 import NavButtons from "./NavButtons";
+import SignIn from "./SignIn";
 
 class PostArticle extends Component {
   state = {
@@ -31,8 +32,10 @@ class PostArticle extends Component {
     const postStyle = {
       textAlign: "center"
     };
+
+    if (!window.localStorage.username) return <SignIn />;
     return (
-      <div>
+      <div className='paper'>
         <header className="Home-header">
           <h1 className="Home-title">NC News</h1>
           <h2 className="Welcome">Post an article</h2>
