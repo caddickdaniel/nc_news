@@ -2,14 +2,14 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@media only screen and (max-width: 1440px) {
+@media only screen and (max-width: 3840px) {
   html {
     max-width: 100%;
     overflow-x: hidden;
   }
 
   .html-style {
-    background-image: url("./background/black-and-white-data-folded-158651.png");
+    background-image: url('./background/black-and-white-data-folded-158651.png');
     background-size: 100%;
     background-attachment: fixed;
   }
@@ -74,7 +74,7 @@
       0 10px 1px -4px rgba(0, 0, 0, 0.5), 0 20px 0 -10px #eee,
       0 20px 1px -9px rgba(0, 0, 0, 0.5);
     padding: 30px;
-    background-image: url("./background/black-and-white-data-folded-158651.png");
+    background-image: url('./background/black-and-white-data-folded-158651.png');
     background-size: 100%;
     background-attachment: fixed;
     position: relative;
@@ -355,8 +355,8 @@
 
   .User-style {
     text-align: center;
-    margin-left: "10em";
-    margin-right: "40em";
+    margin-left: '10em';
+    margin-right: '40em';
   }
 
   .User-username {
@@ -375,10 +375,10 @@
   }
 
   .Single-user {
-    margin: "50px";
-    margin-bottom: "20px";
-    text-indent: "2em";
-    margin-top: "10px";
+    margin: '50px';
+    margin-bottom: '20px';
+    text-indent: '2em';
+    margin-top: '10px';
     text-transform: capitalize;
     text-decoration: orange;
     text-decoration-line: underline;
@@ -584,7 +584,7 @@
   }
 
   .html-style {
-    background-image: url("./background/black-and-white-data-folded-158651.png");
+    background-image: url('./background/black-and-white-data-folded-158651.png');
     background-size: 100%;
     background-attachment: fixed;
     overflow-x: hidden;

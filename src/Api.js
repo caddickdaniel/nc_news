@@ -1,7 +1,7 @@
 import axios from "axios";
 import { navigate } from "@reach/router";
 
-export const url = "https://nc-newz.herokuapp.com/api/";
+export const url = "https://ncnewz.herokuapp.com/api/";
 
 export const getArticles = (p, sort_by, order, topic) => {
   return axios
