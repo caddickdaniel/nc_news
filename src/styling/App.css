@@ -244,32 +244,34 @@
   .Post-article {
     position: relative;
     left: 1em;
-    bottom: 4em;
+    bottom: 2em;
     font-size: 90%;
   }
 
   .Sort-DropText {
     position: relative;
     left: 1em;
+    bottom: 1.5em;
+
     overflow-x: hidden;
   }
 
   .Sort-DropDown {
     position: relative;
     left: 6em;
-    bottom: 3.15em;
+    bottom: 4.45em;
   }
 
   .Order-DropDown {
     position: relative;
-    left: 21em;
-    bottom: 9.4em;
+    left: 18em;
+    bottom: 9.65em;
   }
 
   .Order-DropText {
     position: relative;
     left: 10em;
-    bottom: 4.2em;
+    bottom: 5.7em;
     overflow-x: hidden;
     margin-right: 50%;
   }
@@ -287,7 +289,7 @@
   .DropSubmit {
     position: relative;
     left: 23em;
-    bottom: 9.4em;
+    bottom: 9.7em;
   }
 
   .QueryForm {
@@ -441,11 +443,17 @@
   }
 }
 
+@media only screen and (max-width: 1440px) {
+  .Post-article {
+    bottom: 5em;
+  }
+}
+
 @media only screen and (max-width: 1024px) {
   .Post-article {
     position: relative;
     left: 1em;
-    bottom: 4em;
+    bottom: 5em;
     font-size: 90%;
   }
 
@@ -458,18 +466,18 @@
   .Sort-DropDown {
     position: relative;
     left: 6em;
-    bottom: 3.15em;
+    bottom: 4.55em;
   }
 
   .Order-DropDown {
     position: relative;
-    left: 21em;
-    bottom: 9.4em;
+    left: 6em;
+    bottom: 7.8em;
   }
 
   .Order-DropText {
     position: relative;
-    left: 10em;
+    left: 1em;
     bottom: 4.2em;
     overflow-x: hidden;
   }
@@ -486,8 +494,8 @@
 
   .DropSubmit {
     position: relative;
-    left: 23em;
-    bottom: 9.4em;
+    left: 10em;
+    bottom: 9.8em;
   }
 
   .QueryForm {
@@ -499,38 +507,43 @@
   .QueryForm {
     margin-bottom: -18%;
   }
+  .DropSubmit {
+    position: relative;
+    left: 7.5em;
+    bottom: 7.8em;
+  }
 }
 
 @media only screen and (max-width: 425px) {
   .Post-article {
     position: relative;
-    left: 0em;
+    left: 1em;
     bottom: 6em;
     font-size: 90%;
   }
 
   .Sort-DropText {
     position: relative;
-    left: 1em;
+    left: 0.2em;
     overflow-x: hidden;
   }
 
   .Sort-DropDown {
     position: relative;
-    left: 5em;
-    bottom: 3.15em;
+    left: 2.9em;
+    bottom: 4.45em;
   }
 
   .Order-DropDown {
     position: relative;
-    left: 17em;
-    bottom: 9.3em;
+    left: 22em;
+    bottom: 9.7em;
   }
 
   .Order-DropText {
     position: relative;
-    left: 8em;
-    bottom: 4.2em;
+    left: 15em;
+    bottom: 5.7em;
     overflow-x: hidden;
   }
 
@@ -546,8 +559,8 @@
 
   .DropSubmit {
     position: relative;
-    left: 21em;
-    bottom: 9.3em;
+    left: 16em;
+    bottom: 7.3em;
   }
 
   .QueryForm {
