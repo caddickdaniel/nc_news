@@ -1,7 +1,7 @@
-import axios from "axios";
-import { navigate } from "@reach/router";
+import axios from 'axios';
+import { navigate } from '@reach/router';
 
-export const url = "https://ncnewz.herokuapp.com/api/";
+export const url = 'https://ncnewz.herokuapp.com/api/';
 
 export const getArticles = (p, sort_by, order, topic) => {
   return axios
@@ -51,7 +51,7 @@ export const postComment = (article_id, post) => {
 
 export const postTopic = post => {
   return axios.post(`${url}topics`, { ...post }).then(({ data }) => {
-    navigate("/topics");
+    navigate('/topics');
   });
 };
 
@@ -63,6 +63,6 @@ export const postUser = post => {
 
 export const deleteArticle = article_id => {
   return axios.delete(`${url}articles/${article_id}`).then(({ data }) => {
-    navigate("/");
+    navigate('/');
   });
 };
