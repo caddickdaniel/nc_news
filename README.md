@@ -1,6 +1,6 @@
 # NC-News
 
-This is a front-end news site built using the NC-News API I created [here](https://github.com/caddickdaniel/BE2-NC-Knews)
+This is a front-end news site built using the NC-News API I created [here](https://github.com/caddickdaniel/nc_news_backend)
 
 This application was built to imitate a popular social news site, allowing users creative control on what articles they want to see, vote and comment on. First you will be asked to sign-in, to do so use the example within the placeholder if you haven't made one already.
 
@@ -25,7 +25,7 @@ First off you want to fork the repo from GitHub. To do this click on the fork op
 Then you want to clone the repo. To do this you want to select clone repo, copy the link provided and paste that link into your terminal in an appropriate folder like so
 
 ```bash
-git clone https://github.com/caddickdaniel/nc-newz.git
+git clone https://github.com/caddickdaniel/nc_news.git
 ```
 
 This will download the repo onto your machine. You want to then open the repo using your code editor.
